@@ -1,0 +1,491 @@
+Q1. Equilibrium index of an array
+Asked in:
+
+AMAZON
+ADOBE
+HIKE
+
+Problem Description
+You are given an array A of integers of size N.
+
+Your task is to find the equilibrium index of the given array
+
+The equilibrium index of an array is an index such that the sum of elements at lower indexes is equal to the sum of elements at higher indexes.
+
+NOTE:
+
+Array indexing starts from 0.
+If there is no equilibrium index then return -1.
+If there are more than one equilibrium indexes then return the minimum index.
+
+
+
+Problem Constraints
+1 <= N <= 105
+-105 <= A[i] <= 105
+
+
+Input Format
+First arugment is an array A .
+
+
+Output Format
+Return the equilibrium index of the given array. If no such index is found then return -1.
+
+
+Example Input
+Input 1:
+A=[-7, 1, 5, 2, -4, 3, 0]
+Input 2:
+
+A=[1,2,3]
+
+
+Example Output
+Output 1:
+3
+Output 2:
+
+-1
+
+
+Example Explanation
+Explanation 1:
+3 is an equilibrium index, because: 
+A[0] + A[1] + A[2] = A[4] + A[5] + A[6]
+Explanation 1:
+
+There is no such index.
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        n=len(A)
+        total=sum(A)
+        left=0
+        for i in range(n):
+            total-=A[i]
+            if (left==total):
+                return i
+            left+=A[i]
+        return -1
+     
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Special Index
+
+Asked in:
+
+DUNZO
+
+Problem Description
+Given an array, arr[] of size N, the task is to find the count of array indices such that removing an element from these indices makes the sum of even-indexed and odd-indexed array elements equal.
+
+
+
+Problem Constraints
+1 <= n <= 105
+-105 <= A[i] <= 105
+
+
+Input Format
+First argument contains an array A of integers of size N
+
+
+Output Format
+Return the count of array indices such that removing an element from these indices makes the sum of even-indexed and odd-indexed array elements equal.
+
+
+
+Example Input
+Input 1:
+A=[2, 1, 6, 4]
+Input 2:
+
+A=[1, 1, 1]
+
+
+Example Output
+Output 1:
+1
+Output 2:
+
+3
+
+
+Example Explanation
+Explanation 1:
+Removing arr[1] from the array modifies arr[] to { 2, 6, 4 } such that, arr[0] + arr[2] = arr[1]. 
+Therefore, the required output is 1. 
+Explanation 2:
+
+Removing arr[0] from the given array modifies arr[] to { 1, 1 } such that arr[0] = arr[1] 
+Removing arr[1] from the given array modifies arr[] to { 1, 1 } such that arr[0] = arr[1] 
+Removing arr[2] from the given array modifies arr[] to { 1, 1 } such that arr[0] = arr[1] 
+Therefore, the required output is 3.
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        n=len(A)
+        pe=[0]*n
+        po=[0]*n
+        pe[0]=A[1]
+        for i in range(n):
+            if i%2==0:
+                pe[i]=pe[i-1]+A[i]
+                po[i]=po[i-1]
+            else:
+                po[i]=po[i-1]+A[i]
+                pe[i]=pe[i-1]
+        
+        temp_e=0
+        temp_o=0
+        c=0
+        for i in reversed(range(1,n)):
+            even=temp_o+pe[i-1]
+            odd=temp_e+po[i-1]
+            if even==odd:
+                c+=1
+            if i % 2 == 0:
+                temp_e+=A[i]
+            else:
+                temp_o+=A[i]
+        if temp_e==temp_o:
+            c+=1
+        return c
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Pick from both sides!
+
+Asked in:
+
+GOOGLE
+
+Problem Description
+You are given an integer array A of size N.
+
+You have to pick B elements in total. Some (possibly 0) elements from left end of array A and some (possibly 0) from the right end of array A to get the maximum sum.
+
+Find and return this maximum possible sum.
+
+NOTE: Suppose B = 4, and array A contains 10 elements, then
+
+You can pick the first four elements or can pick the last four elements, or can pick 1 from front and 3 from the back, etc. You need to return the maximum possible sum of elements you can pick.
+
+
+Problem Constraints
+1 <= N <= 105
+
+1 <= B <= N
+
+-103 <= A[i] <= 103
+
+
+
+Input Format
+First argument is an integer array A.
+
+Second argument is an integer B.
+
+
+
+Output Format
+Return an integer denoting the maximum possible sum of elements you picked.
+
+
+
+Example Input
+Input 1:
+
+ A = [5, -2, 3 , 1, 2]
+ B = 3
+Input 2:
+
+ A = [1, 2]
+ B = 1
+
+
+Example Output
+Output 1:
+
+ 8
+Output 2:
+
+ 2
+
+
+Example Explanation
+Explanation 1:
+
+ Pick element 5 from front and element (1, 2) from back so we get 5 + 1 + 2 = 8
+Explanation 2:
+
+ Pick element 2 from end as this is the maximum we can get
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A, B):
+        ans=-float('inf')
+        n=len(A)
+        p=[0]*n
+        p[0]=A[0]
+        for i in range(1,n):
+            p[i]=p[i-1]+A[i]
+        for l in range(B):
+            r=B-l
+            if l == 0:
+                lsum=0
+            else:
+                lsum=p[l-1]
+            if n-r-1<0:
+                rsum=p[n-1]
+            else:
+                rsum=p[n-1]-p[n-r-1]
+            total=lsum+rsum
+            if total>ans:
+                ans=total
+        return ans
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Range Sum Query
+
+Asked in:
+
+FACEBOOK
+
+Problem Description
+You are given an integer array A of length N.
+You are also given a 2D integer array B with dimensions M x 2, where each row denotes a [L, R] query.
+For each query, you have to find the sum of all elements from L to R indices in A (1 - indexed).
+More formally, find A[L] + A[L + 1] + A[L + 2] +... + A[R - 1] + A[R] for each query.
+
+
+
+Problem Constraints
+1 <= N, M <= 105
+1 <= A[i] <= 109
+1 <= L <= R <= N
+
+
+Input Format
+The first argument is the integer array A.
+The second argument is the 2D integer array B.
+
+
+Output Format
+Return an integer array of length M where ith element is the answer for ith query in B.
+
+
+Example Input
+Input 1:
+A = [1, 2, 3, 4, 5]
+B = [[1, 4], [2, 3]]
+Input 2:
+
+A = [2, 2, 2]
+B = [[1, 1], [2, 3]]
+
+
+Example Output
+Output 1:
+[10, 5]
+Output 2:
+
+[2, 4]
+
+
+Example Explanation
+Explanation 1:
+The sum of all elements of A[1 ... 4] = 1 + 2 + 3 + 4 = 10.
+The sum of all elements of A[2 ... 3] = 2 + 3 = 5.
+Explanation 2:
+
+The sum of all elements of A[1 ... 1] = 2 = 2.
+The sum of all elements of A[2 ... 3] = 2 + 2 = 4.
+
+
+
+Sol:
+class Solution:
+
+    def rangeSum(self, A, B):
+        p=[]
+        p.append(A[0])
+        for i in range(1,len(A)):
+            p.append(p[i-1]+A[i])
+        ans=[]
+        for i in range(len(B)):
+            l,r=B[i]
+            if l-2<0:
+                ans.append(p[r-1])
+            else:
+                ans.append(p[r-1]-p[l-2])
+        return ans
+                
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q15. Time to equality
+
+Asked in:
+
+FLIPKART
+
+Problem Description
+Given an integer array A of size N. In one second, you can increase the value of one element by 1.
+
+Find the minimum time in seconds to make all elements of the array equal.
+
+
+Problem Constraints
+1 <= N <= 1000000
+1 <= A[i] <= 1000
+
+
+Input Format
+First argument is an integer array A.
+
+
+Output Format
+Return an integer denoting the minimum time to make all elements equal.
+
+
+Example Input
+A = [2, 4, 1, 3, 2]
+
+
+Example Output
+8
+
+
+Example Explanation
+We can change the array A = [4, 4, 4, 4, 4]. The time required will be 8 seconds.
+
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        maxx=max(A)
+        n=len(A)
+        sec=0
+        for i in range(0,n):
+                s=maxx-A[i]
+                sec+=s
+        return sec
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q16. Product array puzzle
+
+Given an array of integers A, find and return the product array of the same size where the ith element of the product array will be equal to the product of all the elements divided by the ith element of the array.
+
+Note: It is always possible to form the product array with integer (32 bit) values. Solve it without using the division operator.
+
+
+Input Format
+
+The only argument given is the integer array A.
+Output Format
+
+Return the product array.
+Constraints
+
+2 <= length of the array <= 1000
+1 <= A[i] <= 10
+For Example
+
+Input 1:
+    A = [1, 2, 3, 4, 5]
+Output 1:
+    [120, 60, 40, 30, 24]
+
+Input 2:
+    A = [5, 1, 10, 1]
+Output 2:
+    [10, 50, 5, 50]
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def solve(self, A):
+        n=len(A)
+        result=1
+        o=[]
+        f=[]
+        for i in range(n):
+            result*=A[i]
+        for j in range(n):
+            f.append(result/A[j])
+        for u in range(len(f)):
+            p=(int(f[u]))
+            o.append(p)
+        return o
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

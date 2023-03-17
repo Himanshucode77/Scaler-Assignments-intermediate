@@ -1,0 +1,477 @@
+Q1. Special Subsequences "AG"
+
+Asked in:
+
+AMAZON
+
+Problem Description
+You have given a string A having Uppercase English letters.
+
+You have to find how many times subsequence "AG" is there in the given string.
+
+NOTE: Return the answer modulo 109 + 7 as the answer can be very large.
+
+
+
+Problem Constraints
+1 <= length(A) <= 105
+
+
+
+Input Format
+First and only argument is a string A.
+
+
+
+Output Format
+Return an integer denoting the answer.
+
+
+
+Example Input
+Input 1:
+
+ A = "ABCGAG"
+Input 2:
+
+ A = "GAB"
+
+
+Example Output
+Output 1:
+
+ 3
+Output 2:
+
+ 0
+
+
+Example Explanation
+Explanation 1:
+
+ Subsequence "AG" is 3 times in given string 
+Explanation 2:
+
+ There is no subsequence "AG" in the given string.
+
+
+
+Sol:
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        n=len(A)
+        g=0
+        count=0
+        for i in reversed (range(n)):
+            if A[i]=='A':
+                count+=g
+            elif A[i]=='G':
+                g+=1
+
+        return(count)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Closest MinMax
+
+Problem Description
+Given an array A, find the size of the smallest subarray such that it contains at least one occurrence of the maximum value of the array
+
+and at least one occurrence of the minimum value of the array.
+
+
+
+Problem Constraints
+1 <= |A| <= 2000
+
+
+
+Input Format
+First and only argument is vector A
+
+
+
+Output Format
+Return the length of the smallest subarray which has at least one occurrence of minimum and maximum element of the array
+
+
+
+Example Input
+Input 1:
+
+A = [1, 3]
+Input 2:
+
+A = [2]
+
+
+Example Output
+Output 1:
+
+ 2
+Output 2:
+
+ 1
+
+
+Example Explanation
+Explanation 1:
+
+ Only choice is to take both elements.
+Explanation 2:
+
+ Take the whole array.
+
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        mi = min(A)
+        ma = max(A)
+        minindex = -1
+        maxindex = -1
+        ans = len(A)
+        for i in range(len(A)):
+            if A[i] == mi:
+                minindex = i
+            if A[i] == ma:
+                maxindex = i 
+            if  minindex != -1 and maxindex != -1:
+                ans = min(ans,abs(minindex - maxindex)+1)
+        return ans
+                        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Bulbs
+
+Problem Description
+A wire connects N light bulbs.
+
+Each bulb has a switch associated with it; however, due to faulty wiring, a switch also changes the state of all the bulbs to the right of the current bulb.
+
+Given an initial state of all bulbs, find the minimum number of switches you have to press to turn on all the bulbs.
+
+You can press the same switch multiple times.
+
+Note: 0 represents the bulb is off and 1 represents the bulb is on.
+
+
+
+Problem Constraints
+0 <= N <= 5×105
+0 <= A[i] <= 1
+
+
+
+Input Format
+The first and the only argument contains an integer array A, of size N.
+
+
+
+Output Format
+Return an integer representing the minimum number of switches required.
+
+
+
+Example Input
+Input 1:
+
+ A = [0, 1, 0, 1]
+Input 2:
+
+ A = [1, 1, 1, 1]
+
+
+Example Output
+Output 1:
+
+ 4
+Output 2:
+
+ 0
+
+
+Example Explanation
+Explanation 1:
+
+ press switch 0 : [1 0 1 0]
+ press switch 1 : [1 1 0 1]
+ press switch 2 : [1 1 1 0]
+ press switch 3 : [1 1 1 1]
+Explanation 2:
+
+ There is no need to turn any switches as all the bulbs are already on.
+
+
+
+Sol:
+class Solution:
+	# @param A : list of integers
+	# @return an integer
+	def bulbs(self, A):
+        state=0
+        got=0
+        n=len(A)
+        for i in range(0,n):
+            if A[i] == state:
+                got+=1
+                state=1-state
+        return got
+        
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Amazing Subarrays
+
+You are given a string S, and you have to find all the amazing substrings of S.
+
+An amazing Substring is one that starts with a vowel (a, e, i, o, u, A, E, I, O, U).
+
+Input
+
+Only argument given is string S.
+Output
+
+Return a single integer X mod 10003, here X is the number of Amazing Substrings in given the string.
+Constraints
+
+1 <= length(S) <= 1e6
+S can have special characters
+Example
+
+Input
+    ABEC
+
+Output
+    6
+
+Explanation
+    Amazing substrings of given string are :
+    1. A
+    2. AB
+    3. ABE
+    4. ABEC
+    5. E
+    6. EC
+    here number of substrings are 6 and 6 % 10003 = 6.
+
+
+
+Sol:
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        n=len(A)
+        ans=0
+        vowel=set(['A','E','I','O','U','a','e','i','o','u'])
+        for i,x in enumerate(A):
+            if x in vowel:
+                ans+=n-i
+        return (ans%10003)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5. Even Subarrays
+
+Problem Description
+You are given an integer array A.
+
+Decide whether it is possible to divide the array into one or more subarrays of even length such that the first and last element of all subarrays will be even.
+
+Return "YES" if it is possible; otherwise, return "NO" (without quotes).
+
+
+
+Problem Constraints
+1 <= |A|, A[i] <= 106
+
+
+
+Input Format
+The first and the only input argument is an integer array, A.
+
+
+
+Output Format
+Return a string "YES" or "NO" denoting the answer.
+
+
+
+Example Input
+Input 1:
+
+ A = [2, 4, 8, 6]
+Input 2:
+
+ A = [2, 4, 8, 7, 6]
+
+
+Example Output
+Output 1:
+
+ "YES"
+Output 2:
+
+ "NO"
+
+
+Example Explanation
+Explanation 1:
+
+ We can divide A into [2, 4] and [8, 6].
+Explanation 2:
+
+ There is no way to divide the array into even length subarrays.
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return a strings
+    def solve(self, A):
+        n=(len(A))
+        if n % 2 != 0:
+            ans=('NO')
+        else:
+            if A[0] % 2 == 0 and A[-1] % 2 == 0:
+                ans=('YES')
+            else:
+                ans=('NO')
+        return ans
+            
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q6. Leaders in an array
+
+Problem Description
+
+Given an integer array A containing N distinct integers, you have to find all the leaders in array A.
+
+An element is a leader if it is strictly greater than all the elements to its right side.
+
+NOTE:The rightmost element is always a leader.
+
+
+
+Problem Constraints
+
+1 <= N <= 105
+
+1 <= A[i] <= 108
+
+
+
+Input Format
+
+First and only argument is an integer array A.
+
+
+
+Output Format
+
+Return an integer array denoting all the leader elements of the array.
+
+NOTE: Ordering in the output doesn't matter.
+
+
+
+Example Input
+
+Input 1:
+
+ A = [16, 17, 4, 3, 5, 2]
+Input 2:
+
+ A = [1, 2]
+
+
+Example Output
+
+Output 1:
+
+ [17, 2, 5]
+Output 2:
+
+ [2]
+
+
+Example Explanation
+
+Explanation 1:
+
+ Element 17 is strictly greater than all the elements on the right side to it.
+ Element 2 is strictly greater than all the elements on the right side to it.
+ Element 5 is strictly greater than all the elements on the right side to it.
+ So we will return this three elements i.e [17, 2, 5], we can also return [2, 5, 17] or [5, 2, 17] or any other ordering.
+Explanation 2:
+
+ Only 2 the rightmost element is the leader in the array.
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def solve(self, A):
+        ans=[A[-1]]
+        maxx=A[-1]
+        for i in reversed(range(len(A)-1)):
+            if A[i]>maxx:
+                ans.append(A[i])
+                maxx=A[i]
+        return ans
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

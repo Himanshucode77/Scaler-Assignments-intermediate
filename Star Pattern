@@ -1,0 +1,589 @@
+Q1. Stair Pattern
+
+Problem Description:
+Given an integer N, print the corresponding stair pattern for N.
+For example if N = 4 then stair pattern will be like:
+
+*
+**
+***
+****
+
+Problem Constraints
+1 <= N <= 100
+
+Input Format
+First and only line of input contains a single integer N.
+
+Output Format
+Output the stair pattern corresponding to the given N.
+
+
+
+SOL:
+
+def main():
+
+    n=int(input())
+    k=1
+
+    for i in range(0,n):
+        for j in range(0,k):
+            print('*',end='')
+        k+=1
+        print()
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q2. Numeric Stair Pattern
+
+Problem Description:
+Given an integer N, print the corresponding pattern for N.
+
+For example if N = 4 then pattern will be like:
+
+1
+1 2
+1 2 3
+1 2 3 4
+
+Problem Constraints
+1 <= N <= 100
+
+
+Input Format
+First and only line of input contains a single integer N.
+
+Output Format
+Output the pattern corresponding to the given N.
+
+NOTE: There should be no extra spaces after last integer and before first integer in any row and all integers in any row in the pattern are space separated.
+
+Example Input
+
+Input 1:
+ 2
+Input 2:
+ 3
+
+Example Output
+
+Output 1:
+
+1
+1 2
+Output 2:
+
+1
+1 2
+1 2 3
+
+def main():
+
+    n = int(input());
+    for i in range(1,n+1):
+        for j in range(1,i+1):
+            if (j==i):
+                print(j)
+            else:
+
+                print(j,end=" ")
+                
+        
+    return 0
+
+if __name__ == '__main__':
+    main()
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Characters Stair Pattern
+
+Problem Description:
+Given an integer N, print the corresponding pattern for N.
+
+For example if N = 4 then pattern will be like:
+
+A
+B B
+C C C
+D D D D
+
+
+Problem Constraints
+1 <= N <= 26
+
+
+
+Input Format
+First and only line of input contains a single integer N.
+
+
+Output Format
+Output the pattern corresponding to the given N.
+
+NOTE: There should be no extra spaces after last character or before first character in any row and all characters in any row in the pattern are space 
+separated.
+
+
+
+Example Input
+Input 1:
+ 2
+Input 2:
+ 3
+
+Example Output
+Output 1:
+A
+B B
+Output 2:
+A
+B B
+C C C
+
+
+
+Sol:
+
+def main():
+
+    N=int(input())
+    p=65
+    for i in range(N):
+        for j in range(i+1):
+            if (j==i):
+                print(chr(p))
+            else:
+
+                print(chr(p),end=' ')
+        p+=1
+        
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4. Stair Pattern
+
+Problem Description:
+Given an integer N, print the corresponding stair pattern for N.
+
+For example if N = 4 then stair pattern will be like:
+*
+**
+***
+****
+
+Problem Constraints
+1 <= N <= 100
+
+
+Input Format
+First and only line of input contains a single integer N.
+
+Output Format
+Output the stair pattern corresponding to the given N.
+
+Example Input
+Input 1:
+ 2
+Input 2:
+ 3
+
+Example Output
+Output 1:
+ *
+ **
+Output 2:
+ *
+ **
+ ***
+
+
+
+SOL:
+
+def main():
+
+    n=int(input())
+    k=1
+
+    for i in range(0,n):
+        for j in range(0,k):
+            print('*',end='')
+        k+=1
+        print()
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5. Numeric Stair Pattern
+
+Problem Description:
+
+Given an integer N, print the corresponding pattern for N.
+
+For example if N = 4 then pattern will be like:
+
+1
+1 2
+1 2 3
+1 2 3 4
+
+
+Problem Constraints
+
+1 <= N <= 100
+
+
+
+Input Format
+
+First and only line of input contains a single integer N.
+
+
+
+Output Format
+
+Output the pattern corresponding to the given N.
+
+NOTE: There should be no extra spaces after last integer and before first integer in any row and all integers in any row in the pattern are space 
+separated.
+
+
+
+Example Input
+
+Input 1:
+
+ 2
+Input 2:
+
+ 3
+
+
+Example Output
+
+Output 1:
+
+1
+1 2
+Output 2:
+
+1
+1 2
+1 2 3
+
+
+
+SOL:
+
+def main():
+
+    n = int(input());
+    for i in range(1,n+1):
+        for j in range(1,i+1):
+            if (j==i):
+                print(j)
+            else:
+
+                print(j,end=" ")
+                
+        
+    return 0
+
+if __name__ == '__main__':
+    main()
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q6. Characters Stair Pattern
+
+Problem Description
+
+Given an integer N, print the corresponding pattern for N.
+
+For example if N = 4 then pattern will be like:
+
+A
+B B
+C C C
+D D D D
+
+
+Problem Constraints
+
+1 <= N <= 26
+
+
+
+Input Format
+
+First and only line of input contains a single integer N.
+
+
+
+Output Format
+
+Output the pattern corresponding to the given N.
+
+NOTE: There should be no extra spaces after last character or before first character in any row and all characters in any row in the pattern are space
+separated.
+
+
+
+Example Input
+
+Input 1:
+
+ 2
+Input 2:
+
+ 3
+
+
+Example Output
+
+Output 1:
+
+A
+B B
+Output 2:
+
+A
+B B
+C C C
+
+
+
+
+SOL:
+
+def main():
+
+    N=int(input())
+    p=65
+    for i in range(N):
+        for j in range(i+1):
+            if (j==i):
+                print(chr(p))
+            else:
+
+                print(chr(p),end=' ')
+        p+=1
+        
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7. Star Pattern I
+
+Problem Description
+
+Write a program to input an integer N from user and print hollow diamond star pattern series of N lines.
+
+See example for clarifications over the pattern.
+
+
+
+Problem Constraints
+
+1 <= N <= 1000
+
+
+
+Input Format
+
+First line is an integer N
+
+
+
+Output Format
+
+N lines conatining only char '*' as per the question.
+
+
+
+Example Input
+
+Input 1:
+
+4
+Input 2:
+
+6
+
+
+Example Output
+
+Output 1:
+
+********
+***  ***
+**    **
+*      *
+*      *
+**    **
+***  ***
+********
+Output 2:
+
+************
+*****  *****
+****    ****
+***      ***
+**        **
+*          *
+*          *
+**        **
+***      ***
+****    ****
+*****  *****
+************
+
+
+
+
+Sol:
+def main():
+    A=int(input())
+    for i in reversed (range(1,A+1)):
+        for j in range(1,i+1):
+        
+            print('*',end='')
+        for j in range(2*(A-i)):
+            print(' ',end='')
+        for j in range(1,i+1):
+        
+            print('*',end='')
+        print()
+
+    for i in range(1,A+1):
+        for j in  range(1,i+1):
+            print('*',end='')
+        for j in range(2*(A-i)):
+            print(' ',end='')
+        for j in  range(1,i+1):
+            print('*',end='')
+        print()
+        
+    # YOUR CODE GOES HERE
+    # Please take input and print output to standard input/output (stdin/stdout)
+    # E.g. 'input()/raw_input()' for input & 'print' for output
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+-----------------------------------------------------------------------------------------------------------------------------------------------------------   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8. Star Pattern II
+
+Problem Description
+
+Write a program to input an integer N from user and print hollow inverted right triangle star pattern of N lines using '*'.
+
+See example for clarifications.
+
+
+
+Problem Constraints
+
+1 <= N <= 1000
+
+
+
+Input Format
+
+First line is an integer N
+
+
+
+Output Format
+
+N lines conatining only char '*' as per the question.
+
+
+
+Example Input
+
+Input 1:
+
+7
+Input 2:
+
+4
+
+
+Example Output
+
+Output 1:
+
+*******
+*    *
+*   *
+*  *
+* *
+**
+*
+Output 2:
+
+****
+* *
+**
+*
+
+
+
+Sol:
+def main():
+    A=int(input())
+    for i in range(1,A+1):
+        for j in range(i,A+1):
+            #if i==0 or j ==0 or i+j==A-1:
+            if i==j or i==1 or j==A:
+                print('*',end='')
+            else:
+                print(' ',end='')
+        print()
+    
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+-----------------------------------------------------------------------------------------------------------------------------------------------------------   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    

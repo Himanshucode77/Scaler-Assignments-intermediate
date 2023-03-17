@@ -1,0 +1,2422 @@
+Q1:Max of three
+
+Problem Description:
+Write a program to input three numbers(A, B & C) from user and print the maximum element among A, B & C in each line.
+
+Input Format
+First line is a single integer A.
+Second line is a single integer B.
+Third line is a single integer C.
+
+
+SOL:
+
+def main():
+
+    a,b,c=(map(int,input().split()))
+    print(max(a,b,c))
+
+    
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2: Divisible by 2 numbers
+
+Problem Description:
+You are given an integer A. You have to tell whether A is divible by both 5 and 11 or not.
+
+Input Format:
+The input contains a single integer A.
+
+Output Format:
+Print 1 if A is divisible by both 5 and 11, else print 0.
+
+
+SOL:
+
+def main():
+
+    A=int(input()) 
+    if A%5==0 and A%11==0:
+        print(1)
+    else:
+        print(0)
+
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3. Check even/odd
+
+Problem Description:
+Write a program to input an integer from user and print 1 if it is odd otherwise print 0.
+
+Input Format
+One line containing an integer N.
+
+Output Format
+Print either 1 or 0 as per the question.
+
+
+
+SOL:
+
+def main():
+
+    n=int(input()) 
+    if n % 2 == 0:
+        print(0)
+    else:
+        print(1)
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4. Electricity Bill
+
+Problem Description:
+Given an integer A denoting the amount of units of electricity consumed, you have to calculate the electricity bill (in Rs.) with the help of the below 
+charge conditions:
+
+For first 50 units Rs. 0.50/unit
+For next 100 units Rs. 0.75/unit
+For next 100 units Rs. 1.20/unit
+For unit above 250 Rs. 1.50/unit
+An additional surcharge of 20% is added to the bill.
+
+NOTE: As the electricity bill can have any real value (floating point), you have to tell the floor value of the bill.
+
+Floor value of a floating point is the closest integer less than or equal to that value. For eg, Floor value of 2.91 is 2.
+
+
+
+Input Format
+First line of the input contains a single integer A.
+
+Output Format
+Return an integer denoting the floor value of the Electricity bill.
+
+
+
+SOL:
+
+import math
+def bill(A):
+    ans = None
+    # YOUR CODE GOES HERE
+    c=0
+    if A < 50:
+        ans = A*0.50 
+    elif A < 150:
+        c=A-50
+        ans = (c * .75)+(25)
+    elif A < 250:
+        c = A-150
+        ans= (c*1.2)+(100*.75)+(50*.5)
+    else:
+        
+        c= A-250
+        ans=(c*1.50)+(100*1.2)+(100*.75)+(50*.5)
+    
+    print(math.floor(ans + (ans*.2)))
+    return 0
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+    
+Q5. Min of three
+
+Problem Description:
+Write a program to input three numbers(A, B & C) from user and print the minimum element among A, B & C in each line.
+
+Input Format
+First line is a single integer A.
+Second line is a single integer B.
+Third line is a single integer C.
+
+
+
+Output Format
+One line containing an integer as per the question.
+
+
+
+SOL:
+
+def main():
+
+    a,b,c=(map(int,input().split()))
+    print(min(a,b,c))
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+    
+Q6. Bank Account
+
+
+Problem Description:
+You are given a Bank account having N amount and you are asked to perform ADD(credit) or SUBTRACT(debit) operation of an amount X.
+After the operation print the amount left in the Bank account. If the debit amount is greater than current balance print "Insufficient 
+Funds"(without quotes) and the operation is skipped.
+
+
+
+Problem Constraints
+1 <= N, X <= 105
+
+
+Input Format
+First line contains a single integer N denoting the balance in bank account.
+
+Next line contains two space separated integers Type and Amount(X).
+
+If Type == 1, Perform ADD operation.
+If Type == 2, Perform SUBTRACT operation.
+
+
+Output Format
+Print Amount in the bank balance after the operation.
+
+
+
+SOL:
+
+def main():
+
+    N=int(input())
+    M=int(input())
+    for i in range(M):
+        l=[int(j)for j in (input().split())]
+        
+        if l[0]==1:
+            N=N+l[1]
+            print(N)
+        elif (l[0]==2) and (N-l[1]<0):
+            print('Insufficient Funds')
+        elif (l[0]==2) and (N-l[1]>=0):
+            N=N-l[1]
+            print(N)
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7. Sum the digits
+
+Problem Description:
+Mr. Q has a diary in which a lot of numbers are written. He wants to know the sum of digits for every number. Ask Mr. Q about the total numbers written 
+in the diary and then write a code to find the sum of digits for every number.
+Note : Total different Numbers are T and for every number (let's say N) you need to find Sum of digits.
+
+
+
+Problem Constraints
+
+1 <= T <= 1000
+0 <= N <= 100000000
+
+
+
+Input Format
+First line is T which means count of numbers
+Each next T lines contain an integer N.
+
+
+
+Output Format
+T lines each containing one integer representing sum of the digits of the input integer.
+
+
+
+SOL:
+
+def main():
+
+    t=int(input())
+    while (t!=0):
+        n=int(input())
+        
+        s=0
+        while (n!=0):
+            d=n%10
+            s+=d
+            n=n//10
+        print(s)
+        t-=1
+    
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8. Sum of evens!
+
+Problem Description
+You are given an integer A, you need to find and return the sum of all the even numbers between 1 and A.
+Even numbers are those numbers that are divisible by 2.
+
+Problem Constraints
+1 <= N <= 500
+
+Input Format
+First and only argument is an integer A.
+
+Output Format
+Return an integer denoting the sum of even numbers between [1, A] (both inclusive).
+
+
+
+SOL:
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):  
+        even=0
+        for i in range(1,A+1):
+            if (i%2==0):
+                even=even+i
+                    
+        return(even)
+      
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q9. Multiplication Table
+
+Problem Description
+Write a program to print the multiplication table of the number entered by the user, N.
+The table for input N = 5 should get displayed in the following form:
+
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+
+
+Problem Constraints
+1 <= N <= 100
+
+Input Format
+First and only line of input contains an integer N.
+
+Output Format
+Output the Multiplication Table in the given form.
+
+
+SOL:
+
+def main():
+    n=int(input())
+    for i in range(1,10+1):
+        print(n,"*",i,"=", n*i)
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10. Count the digits
+
+Problem Description
+
+Mr Q has a diary in which he has written a lot of numbers. He is confused with the number of digits in every number. Ask Mr Q about the total different
+numbers written in the diary and then write a code to find the number of digits in every number.
+
+Note: Total different Numbers are T and for every number (let's say N) you need to find the total number of digits.
+
+
+Problem Constraints
+
+1 <= T <= 100
+0 <= N <= 100000000
+
+
+
+Input Format
+
+The first line is T which means the total number written in the diary.
+Next T lines contain an integer N.
+
+
+
+Output Format
+
+For T different Numbers, Print the number of digits in T in different lines.
+
+
+Example Input
+
+Input 1:
+
+2
+0
+1
+Input 2:
+
+2
+100
+10101
+
+
+Example Output
+
+Output 1:
+
+1
+1
+Output 2:
+
+3
+5
+
+
+
+
+SOL:
+
+def main():
+
+    tc=int(input())
+    while tc>0:
+        tc-=1
+        n=int(input())
+        count=0
+        if n==0:
+            count=1
+        while n>0:
+            count+=1
+            n=n//10
+        print(count)
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Q11. Reverse Game
+
+Problem Description
+
+Write a program to input T numbers(N) from user and find reverse of the given number.
+
+
+
+Problem Constraints
+
+1 <= T <= 100
+
+1 <= N <= 100000000
+
+
+
+Input Format
+
+First line is T which means number of test cases.
+
+Each next N lines contain an integer N.
+
+
+
+Output Format
+
+T lines each containing reverse of the input integer.
+
+
+
+Example Input
+
+Input 1:
+
+2
+101
+105
+Input 2:
+
+ 
+1
+100
+
+
+Example Output
+
+Output 1:
+
+101
+501
+Output 2:
+
+1
+
+
+
+
+SOL:
+
+def main():
+
+    t=int(input())
+    while t>0:
+        t-=1
+        n=int(input())
+        a=int(0)
+        while n>0:
+            a=(a*10)+(n%10)
+            n=n//10
+        print(a)
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q12. Print the Primes!
+
+Problem Description
+
+You are given an integer N you need to print all the Prime Numbers between 1 and N.
+
+Prime numbers are numbers that have only 2 factors: 1 and themselves. For example, the first 5 prime numbers are 2, 3, 5, 7, and 11.
+
+
+
+Problem Constraints
+
+1 <= N <= 300
+
+
+
+Input Format
+
+First and only line of input contains a single integer N.
+
+
+
+Output Format
+
+Print all the prime numbers between between 1 and N each in a new line.
+
+
+
+Example Input
+
+Input 1:
+
+ 5
+Input 2:
+
+ 10
+
+
+Example Output
+
+Output 1:
+
+ 2
+ 3
+ 5
+Output 2:
+
+ 2
+ 3
+ 5
+ 7
+ 
+ 
+ SOL:
+ 
+ def main():
+
+    n=int(input()) 
+  
+    for i in range (2,n + 1):  
+        c=0
+        for j in range (2, i//+1):  
+        
+            if (i % j == 0):  
+                c+=1
+        if (c<=0):
+            print(i)
+
+           
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q13. Palindromic Integer
+Solved
+character backgroundcharacter
+Stuck somewhere?
+Ask for help from a TA and get it resolved.
+Get help from TA.
+Problem Description
+
+Given an integer A, determine whether it is palindromic or not.
+
+A palindrome integer is an integer X for which reverse(X) = X where reverse(X) is X with its digits reversed. For e.g., reverse(123) = 321.
+
+
+
+Problem Constraints
+
+1 <= A <= 106
+
+
+
+Input Format
+
+First and the only line contains a single integer A.
+
+
+
+Output Format
+
+Print Yes if it is palindromic, else print No.
+
+
+
+Example Input
+
+Input 1:
+
+ 120 
+Input 2:
+
+ 1001 
+Input 3:
+
+ 131 
+
+
+Example Output
+
+Output 1:
+
+ No 
+Output 2:
+
+ Yes 
+Output 3:
+
+ Yes 
+ 
+ 
+ SOL:
+ 
+ def main():
+    n=(int(input()))
+    a=n
+    r=0
+    while n!=0:
+        v=n%10
+        n=n//10
+        r=r*10+v
+        b=r
+    if (a==b):
+        print('Yes')
+    else:
+        
+        print('No')
+
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q14. Easy Power
+
+Problem Description
+
+You are given two integers A and B. You have to find the value of AB.
+
+NOTE: The value of answer is always less than or equal to 109.
+
+
+
+Problem Constraints
+
+1 <= A, B <= 1000
+
+
+
+Input Format
+
+First line of the input contains a single integer A.
+
+Second line of the input contains a single integer B.
+
+
+
+Output Format
+
+Print a single integer in single line.
+
+
+
+Example Input
+
+Input 1:
+
+ 2
+ 3 
+Input 2:
+
+ 1
+ 10 
+
+
+Example Output
+
+Output 1:
+
+ 8 
+Output 2:
+
+ 1 
+    
+    
+    
+ SOL:
+ 
+ def main():
+
+    a=int(input())
+    b=int(input())
+    c=a**b
+    print(c)
+    return 0
+
+if __name__ == '__main__':
+    main()
+    
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q15. Number of days?
+
+Problem Description
+
+Given a month number, A and an year, B, return the number of days in that month (take leap years into account).
+
+
+Problem Constraints
+
+1 <= A <= 12
+
+1 <= B <= 109
+
+
+
+Input Format
+
+First argument is an integer A denoting the month number.
+
+Second argument is an intege B denoting the year.
+
+
+
+Output Format
+
+Return an integer denoting the count of days in the given month.
+
+
+
+Example Input
+
+Input 1:
+
+ A = 2
+ B = 2020
+Input 2:
+
+ A = 10
+ B = 1999
+
+
+Example Output
+
+Output 1:
+
+ 29
+Output 2:
+
+ 31
+
+
+Example Explanation
+
+Explanation 1:
+
+ 2020 is a leap year and month is February. So number of days are 29.
+Explanation 2:
+
+ There are 31 days in month of october.
+
+
+
+Sol:
+
+class Solution:
+
+    def solve(self, A, B):
+        
+        if A in (1,4,3,6,8,9,11):
+            return 30
+        elif A in (7,5,10,12):
+            return 31
+        elif A==2:
+            if (B % 4 == 0) and ( ( B % 100 !=0 ) or ( B % 400 == 0)):
+                return 29
+            else:
+                return 28
+        else:
+            return 28
+
+            
+        print()
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q16. Vowel Or Consonant
+
+Problem Description
+
+You are given a lowercase latin alphabetic character C. You have to tell whether it is a vowel or not.
+
+The characters 'a', 'e', 'i', 'o', and 'u' are called vowels.
+
+
+
+Problem Constraints
+
+C ∈ ['a' - 'z']
+
+
+
+Input Format
+
+The input consists of a single character C.
+
+
+
+Output Format
+
+Return 1 if the given character is a vowel, else return 0.
+
+
+
+Example Input
+
+Input 1:
+
+ a 
+Input 2:
+
+ b 
+
+
+Example Output
+
+Output 1:
+
+ 1 
+Output 2:
+
+ 0 
+
+
+Example Explanation
+
+Explanation 1:
+
+ 'a' is a vowel.
+Explanation 2:
+
+ 'b' is a consonant (not a vowel).
+ 
+ 
+ 
+ SOL:
+ 
+ def isvowel(C):
+    if (C=='a' or C== 'e' or C=='i' or C=='o' or C=='u' or  C=='A' or C=='E' or C=='I' or C=='O' or C=='U'):
+        return 1
+    
+    else:
+        return 0
+    
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q17. Percentage and Grade
+
+Problem Description:
+
+Write a program to calculate the percentage (according to marks of a student) and grade (according to the percentage of a student).
+Five numbers(A, B, C, D & E) represent the marks of a student in 5 subjects which are out of 100. Print the percentage and the grade of the student.
+
+If percentage >= 90% : Grade A
+If percentage >= 80% but <90 : Grade B
+If percentage >= 70% but <80: Grade C
+If percentage >= 60% but <70: Grade D
+If percentage >= 40% but <60: Grade E
+If percentage < 40%: Grade F
+NOTE: You have to take the lowest integer of the percentage. E.g. 90.8% will be treated as 90%.
+
+Input Format:
+
+There will be five lines of inputs as following:
+
+The five lines contain the 5 subject marks of the student in numerical format.
+Output Format:
+
+The first line indicates the percentage in integer format.  
+
+The next line displays the grade in string format.
+Sample Input:
+
+50   
+60   
+70   
+80   
+90
+Sample Output:
+
+70   
+C  
+
+
+
+SOL:
+
+def main():
+
+    a,b,c,d,e=(map(int,input().split()))
+    percentage=((a+b+c+d+e)/5)
+    if percentage >= 90: 
+        print(int(percentage),'A')
+    elif percentage >= 80:
+        print(int(percentage),'B')
+    elif percentage >= 70: 
+        print(int(percentage),'C')
+    elif percentage >= 60: 
+        print(int(percentage),'D')
+    elif percentage >= 40: 
+        print(int(percentage),'E')
+    elif percentage < 40: 
+        print(int(percentage),'F')
+        
+    
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q18. Print the Primes!
+
+Problem Description
+
+You are given an integer N you need to print all the Prime Numbers between 1 and N.
+
+Prime numbers are numbers that have only 2 factors: 1 and themselves. For example, the first 5 prime numbers are 2, 3, 5, 7, and 11.
+
+
+
+Problem Constraints
+
+1 <= N <= 300
+
+
+
+Input Format
+
+First and only line of input contains a single integer N.
+
+
+
+Output Format
+
+Print all the prime numbers between between 1 and N each in a new line.
+
+
+
+Example Input
+
+Input 1:
+
+ 5
+Input 2:
+
+ 10
+
+
+Example Output
+
+Output 1:
+
+ 2
+ 3
+ 5
+Output 2:
+
+ 2
+ 3
+ 5
+ 7
+
+
+Sol:
+
+def main():
+
+    n=int(input()) 
+  
+    for i in range (2,n + 1):  
+        c=0
+        for j in range (2, i//+1):  
+        
+            if (i % j == 0):  
+                c+=1
+        if (c<=0):
+            print(i)
+
+           
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q19. Decimal to Binary
+
+Problem Description
+You are given an integer A in decimal (base 10).
+Return a string denoting the binary (base 2) form of the integer A.
+
+
+
+Problem Constraints
+1 <= A <= 109
+
+
+
+Input Format
+The first line of input contains the integer T, denoting the number of test cases.
+Next T lines contain a single integer A, denoting the integer for that test case.
+
+
+
+Output Format
+Print T lines. In each line, print the string denoting the binary representation of A.
+
+
+
+Example Input
+Input 1:
+
+ 1
+ 10
+Input 2:
+
+ 2
+ 10
+ 11
+
+
+Example Output
+Output 1:
+
+ 1010
+Output 2:
+
+ 1010
+ 1011
+ 
+ 
+ Sol:
+ def main():
+    b=int(input())
+    l=[]
+    for i in range(b):
+        a=int(input())
+
+        
+
+        while (a!=0):
+            v=a % 2
+            l.append(str(v))
+            a=a//2
+        l.reverse()
+        print("".join((l)))
+        l.clear()
+
+    return 0
+    
+
+if __name__ == '__main__':
+    main()
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q20. Binary to Decimal - II
+
+Problem Description
+You are given a number A in binary format (Base = 2). You have to print the number in decimal format (Base = 10).
+
+
+
+Problem Constraints
+1 <= A <= 210
+
+
+
+Input Format
+First and only line contains a single binary number A.
+
+
+
+Output Format
+Print in a single line, a decimal integer.
+
+
+
+Example Input
+Input 1:
+
+ 11 
+Input 2:
+
+ 1011 
+
+
+Example Output
+Output 1:
+
+ 3 
+Output 2:
+
+ 11 
+
+
+
+Sol:
+def main():
+    n=int(input())
+    i=0
+    f=0
+    while (n!=0):
+        v=n%10
+        v=v*2**i
+        i+=1
+        f+=v
+        n=n//10
+    print(f)
+    
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q21. Volume Of Sphere
+
+Problem Description
+
+You are given a positive integer A denoting the radius of a sphere. You have to calculate the volume of the sphere.
+
+Volume of a sphere having radius R is given by (4 * π * R3) / 3.
+
+NOTE: Since, the answer can be a real number, you have to return the ceil value of the volume. Ceil value of a real number X is the smallest integer 
+that is greater than or equal to X.
+
+
+
+Problem Constraints
+
+1 <= A <= 400
+
+
+
+Input Format
+
+First and only argument is an integer A.
+
+
+
+Output Format
+
+Return a single integer denoting the ceil value of volume of the sphere.
+
+
+
+Example Input
+
+Input 1:
+
+ A = 1 
+Input 2:
+
+ A = 4 
+
+
+Example Output
+
+Output 1:
+
+ 5 
+Output 2:
+
+ 269 
+
+
+
+Sol:
+from math import pi
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        q=1
+        r=4*(pi)*(A*A*A)/3
+        b=int(r+q)
+        return(b)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22. Area of Circle
+
+Problem Description
+
+You are given a positive integer A denoting the radius of a circle. You have to calculate the area of the circle.
+
+Arae of a circle having radius R is given by (π * R2).
+
+NOTE: Since, the answer can be a real number, you have to return the ceil value of the area. Ceil value of a real number X is the smallest integer that
+is greater than or equal to X.
+
+
+
+Problem Constraints
+
+1 <= A <= 1000
+
+Input Format
+
+First and only argument is an integer A.
+
+
+
+Output Format
+
+Return a single integer denoting the ceil value of area of the circle.
+
+
+
+Example Input
+
+Input 1:
+
+ A = 1 
+Input 2:
+
+ A = 4 
+
+
+Example Output
+
+Output 1:
+
+ 4 
+Output 2:
+
+ 51 
+
+
+
+Sol:
+from math import pi
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        b=1
+        r=(pi*(A*A))
+        s=int(r+b)
+        return(s)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q23. Scaler Topics - Linear Search-p
+
+Problem Description
+You are given an array of integers A of length N and an integer B.
+
+Return 1 if B is present in the array A, 0 otherwise.
+
+
+
+Problem Constraints
+1 <= N <= 105
+1 <= Ai <= 109
+1 <= B <= 109
+
+
+Input Format
+First argument is the integer array A.
+Second argument is the integer B.
+
+
+Output Format
+Return 1 / 0, depending on the presence of B.
+
+
+Example Input
+Input 1:
+A = [1, 4, 3, 2]
+B = 2
+Input 2:
+
+A = [1, 4, 3, 2]
+B = 5
+
+
+Example Output
+Output 1:
+1
+Output 2:
+
+0
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def linearSearch(self, A, B):
+        for i in range(len(A)):
+            if (B==A[i]):
+                return(1)
+                break
+        else:
+            return(0)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q24. Negative Integers
+
+Problem Description
+
+Write a program to print all negative numbers from input array A of size N where you have to take integer N and further N elements as input from user.
+
+
+
+Problem Constraints
+
+1 <= N <= 1000
+
+
+
+-1000 <= A <= 1000
+
+
+
+Input Format
+
+A single line representing N followed by N integers of the array A
+
+
+
+Output Format
+
+A single line containing elements from the input array which are negative in the same order.
+
+
+
+Sol:
+def main():
+    a=list(map(int,input().split()))
+    for i in range(a[0]+1):
+        if(a[i]<0):
+            print(a[i],end=' ')
+    
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q25. Pair Count
+
+Problem Description
+
+You are given an integer array A and an integer B.
+
+You are required to return the count of pairs having sum equal to B.
+
+NOTE: pair (i,j) and (j,i) are same.
+
+
+
+Problem Constraints
+
+1 <= A.size() <= 10000
+
+1 <= A[i] <= 10000
+
+1 <= B <= 10000
+
+
+
+Input Format
+
+First argument is an integer array A.
+
+Seond argument is an integer B.
+
+
+
+Output Format
+
+You have to return an integer representing count of required pairs.
+
+
+
+Example Input
+
+Input 1:
+
+A = [1,2,3,2,1]
+B = 5
+Input 2:
+
+A = [1,1,1]
+B = 2
+
+
+Example Output
+
+Output 1:
+
+2
+Output 2:
+
+3
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        p=0
+        for i in range(len(A)):
+            for j in range(i+1,len(A)):
+                if(A[i]+A[j]==B):
+                    p+=1
+        return(p)
+    
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q26. Maximum Absolute Difference
+
+Problem Description
+You are given an array of N integers, A1, A2, .... AN.
+
+Return the maximum value of f(i, j) for all 1 ≤ i, j ≤ N. f(i, j) is defined as |A[i] - A[j]| + |i - j|, where |x| denotes absolute value of x.
+
+
+
+Problem Constraints
+1 <= N <= 100000
+
+-109 <= A[i] <= 109
+
+
+
+Input Format
+First argument is an integer array A of size N.
+
+
+
+Output Format
+Return an integer denoting the maximum value of f(i, j).
+
+
+
+Example Input
+Input 1:
+
+A = [1, 3, -1]
+Input 2:
+
+ 
+A = [2]
+
+
+Example Output
+Output 1:
+
+5
+Output 2:
+
+0
+
+
+
+Sol:
+class Solution:
+
+    def maxArr(self, A):
+        max1 = -2000000000
+        min1 = +2000000000
+        max2 = -2000000000
+        min2 = +2000000000
+    
+        for i in range(len(A)):
+    
+    
+            max1 = max(max1, A[i] + i)
+            min1 = min(min1, A[i] + i)
+            max2 = max(max2, A[i] - i)
+            min2 = min(min2, A[i] - i)
+        return max(max1 - min1, max2 - min2)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q27. First Missing Integer
+
+Problem Description
+Given an unsorted integer array, A of size N. Find the first missing positive integer.
+
+Note: Your algorithm should run in O(n) time and use constant space.
+
+
+
+Problem Constraints
+1 <= N <= 1000000
+
+-109 <= A[i] <= 109
+
+
+
+Input Format
+First argument is an integer array A.
+
+
+
+Output Format
+Return an integer denoting the first missing positive integer.
+
+
+
+Example Input
+Input 1:
+
+[1, 2, 0]
+Input 2:
+
+[3, 4, -1, 1]
+Input 3:
+
+[-8, -7, -6]
+
+
+Example Output
+Output 1:
+
+3
+Output 2:
+
+2
+Output 3:
+
+1
+
+
+
+
+Sol:
+class Solution:
+
+    def firstMissingPositive(self, A):
+        m = max(A)  # Storing maximum value
+        if m < 1:
+            return 1
+        if len(A) == 1:
+    
+            return 2 if A[0] == 1 else 1
+        l = [0] * m
+        for i in range(len(A)):
+            if A[i] > 0:
+                if l[A[i] - 1] != 1:
+    
+                    l[A[i] - 1] = 1
+        for i in range(len(l)):
+    
+            if l[i] == 0:
+                return i + 1
+        return i + 2
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q28. Print in Reverse
+
+Problem Description
+
+Write a program to print the input array A of size N in reverse order where you have to take integer N and further N elements as input from user.
+
+
+
+Problem Constraints
+
+1 <= N <= 1000
+
+1 <= A <= 1000
+
+
+
+Input Format
+
+A single line representing N followed by N integers of the array A
+
+
+
+Output Format
+
+A single line containing N space separated integers representing elements of the input array in reverse order.
+
+
+
+Example Input
+
+Input 1:
+
+5 1 2 3 4 5
+Input 2:
+
+4 10 50 40 80
+
+
+Example Output
+
+Output 1:
+
+5 4 3 2 1
+Output 2:
+
+80 40 50 10
+
+
+
+Sol:
+def main():
+    a=list(map(int,input().split()))
+    n=a[0]
+    for i in range(n,0,-1):
+        print(a[i],end=' ')
+if __name__ == '__main__':
+    main()
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q29. Check Palindrome - II
+
+Asked in:
+MS
+
+Problem Description
+Given a string A consisting of lowercase characters.
+
+Check if characters of the given string can be rearranged to form a palindrome.
+
+Return 1 if it is possible to rearrange the characters of the string A such that it becomes a palindrome else return 0.
+
+
+
+Problem Constraints
+1 <= |A| <= 105
+
+A consists only of lower-case characters.
+
+
+
+Input Format
+First argument is an string A.
+
+
+
+Output Format
+Return 1 if it is possible to rearrange the characters of the string A such that it becomes a palindrome else return 0.
+
+
+
+Example Input
+Input 1:
+
+ A = "abcde"
+Input 2:
+
+ A = "abbaee"
+
+
+Example Output
+Output 1:
+
+ 0
+Output 2:
+
+ 1
+
+
+
+Sol:
+from collections import Counter
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        vals=Counter(A)
+        o=''
+        e=''
+        for i,x in vals.items():
+            if x %2==0:
+                e +=i * (x//2)
+            elif not o:
+                o = i
+                e+=i * (x//2)
+            else:
+                return 0
+        return 1
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q30. First Repeating element
+
+Asked in:
+DE SHAW
+GOLDMAN SACHS
+
+Problem Description
+Given an integer array A of size N, find the first repeating element in it.
+
+We need to find the element that occurs more than once and whose index of the first occurrence is the smallest.
+
+If there is no repeating element, return -1.
+
+
+
+Problem Constraints
+1 <= N <= 105
+
+1 <= A[i] <= 109
+
+
+
+Input Format
+The first and only argument is an integer array A of size N.
+
+
+
+Output Format
+Return an integer denoting the first repeating element.
+
+
+
+Example Input
+Input 1:
+
+ A = [10, 5, 3, 4, 3, 5, 6]
+Input 2:
+
+ A = [6, 10, 5, 4, 9, 120]
+
+
+Example Output
+Output 1:
+
+ 5
+Output 2:
+
+ -1
+ 
+ 
+ 
+ Sol:
+ class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def solve(self, A):
+        d={}
+        ans=-1
+        n=len(A)
+        for i in reversed (range(n)):
+            if A[i] in d:
+                ans=A[i]
+            else:
+                d[A[i]]=A[i]
+        return(ans)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q31. 2 Sum
+
+Problem Description
+
+Given an array of integers, find two numbers such that they add up to a specific target number.
+
+The function twoSum should return indices of the two numbers such that they add up to the target, where index1 < index2. Please note that your returned
+answers (both index1 and index2 ) are not zero-based. Put both these numbers in order in an array and return the array from your function
+( Looking at the function signature will make things clearer ). Note that, if no pair exists, return empty list.
+
+If multiple solutions exist, output the one where index2 is minimum. If there are multiple solutions with the minimum index2, choose the one with 
+minimum index1 out of them.
+
+Input: [2, 7, 11, 15], target=9
+Output: index1 = 1, index2 = 2
+
+
+Sol:
+class Solution:
+	# @param A : tuple of integers
+	# @param B : integer
+	# @return a list of integers
+	def twoSum(self, w, t):
+        fm = {}
+        l =[]
+        p = False
+        for i,x in enumerate(w):
+            if (t-x) in fm:
+                end = i+1
+                start = fm[t-x]
+                return start,end
+            elif x  not in fm:
+                fm[x] = i+1
+        return []
+        
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Q32. Reverse string - II
+
+Problem Description
+Write a program to reverse the words present in a string. Everything else should be preserved.
+Check example input/output. Note: There are no punctuation and special characters in the string.
+The string will only contain alphanumeric characters and spaces.
+
+
+Example Input
+Everyone loves data science
+
+
+Example Output
+enoyrevE sevol atad ecneics
+
+
+
+Sol:
+def main():
+
+    a=input()
+    a=a[::-1]
+    a=" ".join(a.split()[::-1])
+    print(a)
+if __name__ == '__main__':
+    main()
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q33. Trim From Ends
+
+Problem Description
+
+You are given a character string A. You to trim(remove) both leading and trailing asterisk characters('*') in the string and return the resultant string.
+
+
+
+Problem Constraints
+
+1 <= |A| <= 105
+
+A[i] ∈ ['a'-'z', '*']
+
+
+
+Input Format
+
+First and only argument is a character string A.
+
+
+
+Output Format
+
+Return a character string denoting the resultant string after trimming.
+
+
+
+Example Input
+
+Input 1:
+
+A = "**h*e*l*lo*"
+Input 2:
+
+A = "noasteriskhere"
+
+
+Example Output
+
+Output 1:
+
+h*e*l*l*o
+Output 2:
+
+noasteriskhere
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        return(A.strip('*'))
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q33. Reverse the word - II
+
+Problem Description
+You are given lowercase string (A) and you have to return after reversing that.
+
+
+
+Problem Constraints
+1 <= S.size() <= 1000
+
+
+
+Input Format
+First and only argument containing a lowercase string S.
+
+
+
+Output Format
+You have to return string which is reverse form of input string.
+
+
+
+Example Input
+Input 1:
+
+interviewbit
+Input 2:
+
+scaler
+
+
+Example Output
+Output 1:
+
+tibweivretni
+Output 2:
+
+relacs
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        o=A[::-1]
+        return o
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q34. First Occurrence Of Word
+
+Problem Description
+
+You are given two character strings A and B.
+
+You have to find the first occurrence of string B in string A, as a substring, and return the starting position of first occurrence.
+
+A substring is a contiguous sequence of characters within a string. For e.g "at" is a substring in "catalogue".
+
+
+
+Problem Constraints
+
+1 <= |A|, |B| <= 1000
+
+A[i], B[i] ∈ ['a'-'z']
+
+
+
+Input Format
+
+First argument is a character string A.
+
+Second argument is a character string B.
+
+
+
+Output Format
+
+Return an integer denoting the starting position of first occurrence, or return -1 to report that there is no such occurrence.
+
+
+
+Example Input
+
+Input 1:
+
+ A = "aabababaa"
+ B = "ba" 
+Input 2:
+
+ A = "abc"
+ B = "ac" 
+
+
+Example Output
+
+Output 1:
+
+ 3 
+Output 2:
+
+ -1 
+ 
+ 
+ 
+ 
+ Sol:
+ class Solution:
+
+    def solve(self, A, B):
+        c=1+A.find(B)
+        if c==0:
+
+            return -1
+        
+        else:
+            return c
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q35. Vowels vs Consonants - II
+
+Problem Description
+You are given lowercase string (A) and you have to tell count of vowels and consonants in it.
+
+
+
+Problem Constraints
+1 <= S.size() <= 1000
+
+
+
+Input Format
+First and only argument containing a lowercase string S.
+
+
+
+Output Format
+You have to return an array of two elements representing count of vowels and consonants in input string respectively.
+
+
+
+Example Input
+Input 1:
+
+interviewbit
+Input 2:
+
+scaler
+
+
+Example Output
+Output 1:
+
+[5 7]
+Output 2:
+
+[2 4]
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        v='aeiouAEIOU'
+        b=0
+        c=0
+        for i in A:
+            if i in v:
+                b+=1
+            else:
+                c+=1
+        return(b,c)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q36.Length of String - II
+
+Problem Description
+You have a string (A).
+
+You have to return length of input string.
+
+
+
+Problem Constraints
+1 <= A.size() <= 1000
+
+
+
+Input Format
+First and only argument containing a lowercase string A.
+
+
+
+Output Format
+You have to return an integer as per the question.
+
+
+
+Example Input
+Input 1:
+
+scaler
+Input 2:
+
+interviewbit
+
+
+Example Output
+Output 1:
+
+6
+Output 2:
+
+12
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        b=(len(A))
+        return(b)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q37.Is is Palindrome?
+
+Problem Description
+
+Write a program to input T strings (S) from user and print 1 if it is palindrome otherwise print 0. NOTE:A string is palindrome if it reads the same from backward as from forward.
+
+
+
+Problem Constraints
+
+1 <= T <= 100
+
+1 <= S.size() <= 1000
+
+
+
+Input Format
+
+First line is T which means number of test cases.
+
+Each next T lines contain a string S.
+
+
+
+Output Format
+
+T lines each containing either 0 or 1.
+
+
+
+Example Input
+
+Input 1:
+
+3
+abcba
+axax
+abba
+
+
+Example Output
+
+Output 1:
+
+1
+0
+1
+
+
+
+
+Sol:
+def main():
+    t=int(input())
+    while t!=0:
+        t-=1
+        a=input()
+        if a==a[::-1]:
+
+            print(1)
+        else:
+            print(0)
+               
+                
+
+        
+
+    
+    return 0
+
+if __name__ == '__main__':
+    main()
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q38. Bubble Sort
+
+Problem Description
+Implement Bubble Sort in the article below.
+
+Given an integer array A of size N, sort the array using bubble sort algorithm.
+Return the array after sorting.
+
+
+
+Problem Constraints
+1 <= N <= 103
+1 <= Ai <= 109
+
+
+Input Format
+First argument is the integer array A.
+
+
+Output Format
+Return the array A after sorting.
+
+
+Example Input
+Input 1:
+A = [1, 4, 3, 2]
+Input 2:
+
+A = [4, 2, 1, 4]
+
+
+Example Output
+Output 1:
+[1, 2, 3, 4]
+Output 2:
+
+[1, 2, 4, 4]
+
+
+Example Explanation
+Explanation 1:
+After sorting the array, we get [1, 2, 3, 4].
+Input 2:
+
+After sorting the array, we get [1, 2, 4, 4].
+
+
+
+
+Sol:
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def bubbleSort(self, A):
+        n=len(A)
+        for j in range(n-1):
+
+            for i in range(n-1):
+                if A[i] > A[i+1]:
+                    A[i],A[i+1]=A[i+1],A[i]
+        return A
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q39. Little Ponny and Mobile Phones
+
+Problem Description
+Little pony is going to buy some mobile phones for his friends. As there many models available in the market at different prices, He is confused and wants to know the maximum distinct models of a mobile phone he can buy for his friends, given that he has a total X amount of money.
+
+You are given an array A of size N. denoting the size of prices of different models. The array is sorted based on prices in increasing order. You are given another array B of size Q denoting the queries. In i'th query, you need to tell the maximum distinct models of mobile phones he can buy with B[i] money.
+
+
+
+Problem Constraints
+1 <= N, Q <= 105
+1 <= A[i] <= 104
+1 <= B[i] <= 109
+
+
+Input Format
+The 1st argument of the input is the array A.
+The 2nd argument of the input is the array B containing the description of the queries.
+
+
+Output Format
+Your function should return the answer to all queries in an array (in the same order they were asked in the input).
+
+
+
+Example Input
+Input 1:
+
+A: [3, 4, 4, 6] B: [20, 4, 10, 2]
+
+
+Example Output
+Output 1:
+
+ [4, 1, 2, 0]
+
+
+Example Explanation
+Explanation 1:
+
+ 
+For the 1st query, he has 20 amount of money and he can buy the phones in just 3 + 4 + 4 + 6 = 17 rupees.
+
+For the 2nd query, he has 4 amount of money and he can buy any the second or first phone .
+
+For the 3rd query, he has 10 amount of money and he can buy the third and fourth phone in 6 + 4 = 10 amount of money 
+
+For the 2nd query, he has 2 amount of money and he can't buy any phone with it 
+
+
+
+
+
+Sol:
+from bisect import bisect_right
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return a list of integers
+    def solve(self, A, B):
+        for i in range(1,len(A)):
+            A[i]=A[i]+A[i-1]
+        for i in range(len(B)):
+            B[i]=bisect_right(A,B[i])
+        return B
+
+------------------------------------------------------------------BASICS----------------------------------------------------------------------------------------
+-------------------------------------------------------------------ENDS---------------------------------------------------------------------------------------
+
+
+
+
+
+

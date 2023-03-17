@@ -1,0 +1,1950 @@
+Q1. HCF using Loop
+
+
+Problem Description
+Write a program to input an integer T and then for each test case input two integers A and B in two different lines and then print T lines containing 
+HCF of two given 2 numbers A and B.
+
+
+
+Problem Constraints
+1 <= T <= 1000
+
+1 <= A,B <= 1000000
+
+
+
+Input Format
+In first-line input T which means number of test cases.
+
+Next 2T lines contains input A and B for each testcase.
+First line of each testcase contain an integer A and second line of the testcase contains input B.
+
+
+
+Output Format
+T lines each containing an integer representing HCF of A & B.
+
+
+
+Example Input
+Input 1:
+
+2
+15
+105 
+24
+36
+
+
+Example Output
+Output 1:
+
+15
+12
+
+
+Sol:
+def main():
+    t=int(input())
+    while t!=0:
+        a,b=list(map(int,input().split()))
+        s=min(a,b)
+        for i in range(1,s+1):
+            if(a%i==0) and (b%i==0):
+                hcf=i
+        print(hcf)
+        t=t-1
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. LCM of two numbers Easy
+
+Problem Description
+Write a function that takes to positive integers A and B and returns their LCM.
+
+
+Problem Constraints
+1 <= A,B <= 200
+
+
+Input Format
+The first argument is a single integer A
+The second argument is a single integer B
+
+
+Output Format
+Return a single integer that is the LCM of A and B.
+
+
+Example Input
+Input 1:
+A = 5
+B = 10
+Input 2:
+
+A = 2
+B = 3
+
+
+Example Output
+Output 1:
+10
+Output 2:
+
+6
+
+
+Example Explanation
+Explanation 1:
+LCM(5,10)=10
+Explanation 2:
+
+LCM(2,3)=6
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A, B):
+        if A>B:
+            small=B
+        else:
+            small=A 
+        while True:
+            if((small%B==0) and (small%A==0)):
+                lcm=small
+                break
+            small+=1
+        return lcm
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q3. Least Common Multiple
+Solved
+Asked in:
+
+SL
+character backgroundcharacter
+Stuck somewhere?
+Ask for help from a TA and get it resolved.
+Get help from TA.
+Problem Description
+Write a program to input an integer T and then for each test case input two integers A and B in two different lines and then print T lines containing 
+Least Common Multiple (LCM) of two given 2 numbers A and B.
+
+LCM of two integers is the smallest positive integer divisible by both.
+
+
+
+Problem Constraints
+1 <= T <= 1000
+
+1 <= A,B <= 1000
+
+
+
+Input Format
+In first-line input T which means number of test cases.
+
+Next 2T lines contains input A and B for each testcase.
+First line of each testcase contain an integer A and second line of the testcase contains input B.
+
+
+
+Output Format
+
+
+T lines each containing an integer representing LCM of A & B.
+
+
+
+Example Input
+Input 1:
+3
+2
+3
+9
+6
+2
+6
+
+
+Example Output
+Output 1:
+6
+18
+6
+
+
+Example Explanation
+Explanation:
+
+ In first testcase 6 is the smallest positive integer which is divisible by both 2 (2 * 3 = 6) and 3 (3 * 2 = 6).
+ In second testcase 18 is the smallest positive integer which is divisible by both 9 (9 * 2 = 18) and 6 (6 * 3 = 18).
+ In third testcase  6 is the smallest positive integer which is divisible by both 2 (2 * 3 = 6) and 6 (6 * 1 = 6).
+
+
+
+Sol:
+class Solution:
+
+    def LCM(self, A, B):
+        if A > B:
+            maxx=A
+        else:
+            maxx=B
+        duplicate_max=maxx
+        while True:
+            if (maxx % A == 0)and(maxx % B == 0):
+                lcm=maxx
+                break
+            else:
+                maxx+=duplicate_max
+        return lcm
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q4. Find nth Magic Number
+
+Problem Description
+Given an integer A, find and return the Ath magic number.
+
+A magic number is defined as a number that can be expressed as a power of 5 or a sum of unique powers of 5.
+
+First few magic numbers are 5, 25, 30(5 + 25), 125, 130(125 + 5), ….
+
+
+
+Problem Constraints
+1 <= A <= 5000
+
+
+
+Input Format
+The only argument given is integer A.
+
+
+
+Output Format
+Return the Ath magic number.
+
+
+
+Example Input
+Example Input 1:
+
+ A = 3
+Example Input 2:
+
+ A = 10
+
+
+Example Output
+Example Output 1:
+
+ 30
+Example Output 2:
+
+ 650
+
+
+Example Explanation
+Explanation 1:
+
+ Magic Numbers in increasing order are [5, 25, 30, 125, 130, ...]
+ 3rd element in this is 30
+Explanation 2:
+
+ In the sequence shown in explanation 1, 10th element will be 650.
+
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        base=5
+        res=0
+
+        a=(bin(A)[2:])
+        #print((a))
+        ans=0
+        val=[]
+        for i in range(len(a)):
+            d=int(a[i])
+            ans=ans*10
+            val.append(ans+d)
+            #print((val))
+
+        n=len(val)
+        #print((val))
+        for i in reversed (range(0,n)):
+            res+=(val[i]*base)**(n-i)
+        return(res)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5. Find Nth Fibonacci
+
+Problem Description
+
+Given an integer A you need to find the Ath fibonacci number modulo 109 + 7.
+
+The first fibonacci number F1 = 1
+
+The first fibonacci number F2 = 1
+
+The nth fibonacci number Fn = Fn-1 + Fn-2 (n > 2)
+
+
+
+Problem Constraints
+
+1 <= A <= 109.
+
+
+
+Input Format
+
+First argument is an integer A.
+
+
+
+Output Format
+
+Return a single integer denoting Ath fibonacci number modulo 109 + 7.
+
+
+
+Example Input
+
+Input 1:
+
+ A = 4
+Input 2:
+
+ A = 3
+
+
+Example Output
+
+Output 1:
+
+ 3
+Output 2:
+
+ 2
+
+
+Example Explanation
+
+Explanation 1:
+
+ F3 = F2 + F1 = 1 + 1 = 2
+ F4 = F3 + F2 = 2 + 1 = 3
+Explanation 2:
+
+ F3 = F2 + F1 = 1 + 1 = 2
+
+
+
+
+Sol:
+class Solution:
+
+    def solve(self, A):
+        a=1
+        b=1
+        c=0
+        i=3
+        while i<=A:
+            c=a+b
+            a=b
+            b=c
+            i=i+1
+            c = c % ((10**9) + 7)
+        return(c)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q6. Roots Of Quadratic Equation
+
+Problem Description
+
+You are given values of coefficients A, B and C of a quadratic equation : A * X2 + B * X + C = 0.
+
+You have to tell whether the roots of equation are:
+
+Real and distinct
+Real and equal
+Imaginary / Complex
+
+
+Problem Constraints
+
+-1000 <= A, B, C <= 1000
+
+
+
+Input Format
+
+First line of the input contains a single integer A.
+
+Second line of the input contains a single integer B.
+
+Third line of the input contains a single integer C.
+
+
+
+Output Format
+
+If the roots are real and distinct, print 1.
+If the root are real and equal, print 0.
+If the roots are complex or imaginary, print -1.
+
+
+Example Input
+
+Input 1:
+
+ 8
+ -4
+ -2
+Input 2:
+
+ 3
+ 1
+ 2
+
+
+Example Output
+
+Output 1:
+
+ 1 
+Output 2:
+
+ -1
+
+
+Example Explanation
+
+Explanation 1:
+
+ Discriminant (D) = B * B - 4 * A * C = (-4) * (-4) - 4 * 8 * (-2)
+                  = 80 
+ As D > 0, the roots are real and distinct.
+Explanation 2:
+
+ Discriminant (D) = B * B - 4 * A * C = 1 * 1 - 4 * 3 * 2
+                  = 1 - 24
+                  = -23
+ As D < 0, the roots are complex.
+ 
+ 
+ 
+ 
+ Sol:
+ def main():
+    a=int(input())
+    b=int(input())
+    c=int(input())
+    d=b**2-4*a*c
+    if (d > 0):
+        print (1)
+    elif (d < 0):
+        print (-1)
+    else:
+        print (0)
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7.Trailing Zeros in Factorial
+
+Asked in:
+MICROSOFT
+JABONG
+ZILLOW
+
+Problem Description
+Given an integer A, return the number of trailing zeroes in A! i.e., factorial of A.
+
+Note: Your solution should run in logarithmic time complexity.
+
+
+
+Problem Constraints
+1 <= A <= 109
+
+
+
+Input Format
+First and only argument is a single integer A.
+
+
+
+Output Format
+Return a single integer denoting number of zeroes.
+
+
+
+Example Input
+Input 1
+
+ A = 5
+Input 2:
+
+ A = 6
+
+
+Example Output
+Output 1:
+
+ 1
+Output 2:
+
+ 1
+
+
+Example Explanation
+Explanation 1:
+
+ A! = 120.
+ Number of trailing zeros = 1. So, return 1.
+Explanation 2:
+
+ A! = 720 
+ Number of trailing zeros = 1. So, return 1.
+ 
+ 
+ 
+ Sol:
+ class Solution:
+
+	def trailingZeroes(self, A):
+        i=5
+        b=0
+        while A>=i:
+            v=A//5
+            b+=v
+            A=A//5
+        return(b)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8. Nth term of AP
+
+Problem Description
+Given three integers A, B and C. Return the Cth term of the Arithmetic Progression where the first term is A and the sequence increases by B in every 
+element.
+For example the sequence P,
+P[1] = A
+P[2] = A + B
+P[3] = A + B + B
+P[4] = A + B + B + B... and so on.
+
+
+Problem Constraints
+-103 <= A,B <= 103
+1 <= C <= 103
+
+
+Input Format
+The first argument is a single integer A.
+The second argument is a single integer B.
+The third argument is a single integer C.
+
+
+Output Format
+Return a single Integer that is the Cth term of the AP.
+
+
+Example Input
+Input 1:
+A = 1
+B = 1
+C = 5
+Input 2:
+
+A = 7
+B = -2
+C = 7
+
+
+Example Output
+Ouput 1:
+5
+Ouput 2:
+
+-5
+
+
+Example Explanation
+Explanation 1:
+The AP is 1, 2, 3, 4, 5, 6,....
+The 5th term in this AP is 5.
+Explanation 2:
+
+The AP is 7, 5, 3, 1, -1, -3, -5, -7....
+The 7th term in this AP is -5.
+
+
+
+Sol:
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @param C : integer
+    # @return an integer
+    def solve(self, A, B, C):
+        An=A+(C-1)*B
+        return(An)
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q9. Fibonacci Number
+
+Asked in:
+Amazon
+BLOOMBERG
+SNAPDEAL
+
+Problem Description
+Given a positive integer A, write a program to find the Ath Fibonacci number.
+
+In a Fibonacci series, each term is the sum of the previous two terms and the first two terms of the series are 0 and 1. i.e. f(0) = 0 and f(1) = 1.
+Hence, f(2) = 1, f(3) = 2, f(4) = 3 and so on.
+
+NOTE: 0th term is 0. 1th term is 1 and so on.
+
+
+
+Problem Constraints
+0 <= A <= 44
+
+
+
+Input Format
+First and only argument is an integer A.
+
+
+
+Output Format
+Return an integer denoting the Ath Fibonacci number.
+
+
+
+Example Input
+Input 1:
+
+ A = 4
+Input 2:
+
+ A = 6
+
+
+Example Output
+Output 1:
+
+ 3
+Output 2:
+
+ 8
+ 
+ 
+ 
+ 
+ Sol:
+ def main():
+    a=int(input())
+    b=1
+    c=1
+    d=0
+    e=3
+    while e<=a:
+        d=b+c
+        b=c
+        c=d
+        e+=1
+    print(c)
+    
+   
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10. Find Nth Fibonacci
+
+Problem Description
+
+Given an integer A you need to find the Ath fibonacci number modulo 109 + 7.
+
+The first fibonacci number F1 = 1
+
+The first fibonacci number F2 = 1
+
+The nth fibonacci number Fn = Fn-1 + Fn-2 (n > 2)
+
+
+
+Problem Constraints
+
+1 <= A <= 109.
+
+
+
+Input Format
+
+First argument is an integer A.
+
+
+
+Output Format
+
+Return a single integer denoting Ath fibonacci number modulo 109 + 7.
+
+
+
+Example Input
+
+Input 1:
+
+ A = 4
+Input 2:
+
+ A = 3
+
+
+Example Output
+
+Output 1:
+
+ 3
+Output 2:
+
+ 2
+
+
+Example Explanation
+
+Explanation 1:
+
+ F3 = F2 + F1 = 1 + 1 = 2
+ F4 = F3 + F2 = 2 + 1 = 3
+Explanation 2:
+
+ F3 = F2 + F1 = 1 + 1 = 2
+ 
+ 
+ 
+ 
+ Sol:
+ class Solution:
+
+    def solve(self, A):
+        a=1
+        b=1
+        c=0
+        i=3
+        while i<=A:
+            c=a+b
+            a=b
+            b=c
+            i=i+1
+            c = c % ((10**9) + 7)
+        return(c)
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q11. Is It Prime?
+
+Problem Description
+
+Given an integer A, you have to tell whether it is a prime number or not.
+
+A prime number is a natural number greater than 1 which is divisible only by 1 and itself.
+
+
+
+Problem Constraints
+
+1 <= A <= 106
+
+
+
+Input Format
+
+First and only line of the input contains a single integer A.
+
+
+
+Output Format
+
+Print YES if A is a prime, else print NO.
+
+
+
+Example Input
+
+Input 1:
+
+ 3 
+Input 2:
+
+ 4 
+
+
+Example Output
+
+Output 1:
+
+ YES 
+Output 2:
+
+ NO 
+
+
+Example Explanation
+
+Explanation 1:
+
+ 3 is a prime number as it is only divisible by 1 and 3.
+Explanation 2:
+
+ 4 is not a prime number as it is divisible by 2.
+ 
+ 
+ 
+ 
+ Sol:
+ def main():
+    a=int(input())
+    c=0
+    for i in range(1,a+1):
+        if a%i==0:
+            c+=1
+    if c==2:
+        print('YES')
+    else:
+        print('NO')
+
+  
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q12. Is It Perfect?
+
+Problem Description
+
+You are given N positive integers.
+
+For each given integer A, you have to tell whether it is a perfect number or not.
+
+A perfect number is a positive integer which is equal to the sum of its proper positive divisors.
+
+
+
+Problem Constraints
+
+1 <= N <= 10
+
+1 <= A <= 106
+
+
+
+Input Format
+
+The first line of the input contains a single integer N.
+
+Each of the next N lines contains a single integer A.
+
+
+
+Output Format
+
+In a separate line, print YES if a given integer is perfect, else print NO.
+
+
+
+Example Input
+
+Input 1:
+
+ 2
+ 4
+ 6 
+Input 2:
+
+ 1
+ 3 
+
+
+Example Output
+
+Output 1:
+
+ NO
+ YES 
+Output 2:
+
+ NO 
+
+
+Example Explanation
+
+Explanation 1:
+
+ For A = 4, the answer is "NO" as sum of its proper divisors = 1 + 2 = 3, is not equal to 4. 
+ For A = 6, the answer is "YES" as sum of its proper divisors = 1 + 2 + 3 = 6, is equal to 6. 
+Explanation 2:
+
+ For A = 3, the answer is "NO" as sum of its proper divisors = 1, is not equal to 3. 
+ 
+ 
+ 
+ 
+ 
+ Sol:
+ def main():
+    t=int(input())
+    while t!=0:
+        t-=1
+        n=int(input())
+        s=0
+        for i in range(1,n):
+            if n % i == 0:
+                s+=i
+        if s==n:
+            print('YES')
+        else:
+            print('NO')
+
+    
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q13. Summation Game
+
+Problem Description
+
+Write a program to find sum all Natural numbers from 1 to N where you have to take N as input from user
+
+
+
+Problem Constraints
+
+1 <= N <= 1000
+
+
+
+Input Format
+
+A single line representing N
+
+
+
+Output Format
+
+A single integer showing sum of all Natural numbers from 1 to N
+
+
+
+Example Input
+
+Input 1:
+
+5
+Input 2:
+
+10
+
+
+Example Output
+
+Output 1:
+
+15
+Output 2:
+
+55
+
+
+
+Sol:
+def main():
+    n=int(input())
+    sum=0
+    for i in range(1,n+1):
+        sum+=i
+    print(sum)
+    
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q14. Square root of a number
+
+Problem Description
+
+Given a number A. Return square root of the number if it is perfect square otherwise return -1.
+
+
+
+Problem Constraints
+
+1 <= A <= 108
+
+
+
+Input Format
+
+First argument is an integer A.
+
+
+
+Output Format
+
+Return an integer which is the square root of A if A is perfect square otherwise return -1.
+
+
+
+Example Input
+
+Input 1:
+
+A = 4
+Input 2:
+
+A = 1001
+
+
+Example Output
+
+Output 1:
+
+2
+Output 2:
+
+-1
+
+
+Example Explanation
+
+Explanation 1:
+
+sqrt(4) = 2
+Explanation 2:
+
+1001 is not a perfect square.
+
+
+
+
+Sol:
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        b=A**0.5
+        if b==int(b):
+            return(int(b))
+        else:
+            return(-1)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q15. Armstrong Numbers!
+
+Problem Description
+
+You are given an integer N you need to print all the Armstrong Numbers between 1 to N.
+
+If sum of cubes of each digit of the number is equal to the number itself, then the number is called an Armstrong number.
+
+For example, 153 = ( 1 * 1 * 1 ) + ( 5 * 5 * 5 ) + ( 3 * 3 * 3 ).
+
+
+
+Problem Constraints
+
+1 <= N <= 500
+
+
+
+Input Format
+
+First and only line of input contains an integer N.
+
+
+
+Output Format
+
+Output all the Armstrong numbers in range [1,N] each in a new line.
+
+
+
+Example Input
+
+Input 1:
+
+ 5
+Input 2:
+
+ 200
+
+
+Example Output
+
+Output 1:
+
+1
+Output 2:
+
+1
+153
+
+
+Example Explanation
+
+Explanation 1:
+
+1 is an armstrong number.
+Explanation 2:
+
+1 and 153 are armstrong number under 200.
+
+
+
+
+Sol:
+N=int(input())
+for num in range(1,N+1):
+    sum=0
+    i=num
+    while (i>0):
+        d=i%10
+        sum+=d**3
+        i//=10
+    if num==sum:
+        print(num)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q16. Multiplication Table!
+
+Problem Description
+For a given number A, print its multiplication table having the first 10 multiples.
+
+
+
+Problem Constraints
+1 <= A <= 1000
+
+
+
+Input Format
+First line contains a single integer A.
+
+
+
+Output Format
+Print 10 lines, ith line containing ith multiple.
+
+
+
+Example Input
+Input 1:
+
+ 2 
+Input 2:
+
+ 3 
+
+
+Example Output
+Output 1:
+
+ 2 * 1 = 2 
+ 2 * 2 = 4 
+ 2 * 3 = 6 
+ 2 * 4 = 8 
+ 2 * 5 = 10 
+ 2 * 6 = 12 
+ 2 * 7 = 14 
+ 2 * 8 = 16 
+ 2 * 9 = 18 
+ 2 * 10 = 20 
+Output 2:
+
+ 3 * 1 = 3 
+ 3 * 2 = 6 
+ 3 * 3 = 9 
+ 3 * 4 = 12 
+ 3 * 5 = 15 
+ 3 * 6 = 18 
+ 3 * 7 = 21 
+ 3 * 8 = 24 
+ 3 * 9 = 27 
+ 3 * 10 = 30 
+
+
+Example Explanation
+Explanantion 1:
+
+ For A = 2, First 10 multiples of 2 are 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 
+Explanation 2:
+
+ For A = 3, First 10 multiples of 3 are 3, 6, 9, 12, 15, 18, 21, 24, 27, 30
+ 
+ 
+ 
+ 
+ Sol:
+ def main():
+    a=int(input())
+    b=11
+    for i in range(1,b):
+        ans=i*a
+        print(a, '*' ,i,'=',ans)
+         
+
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q17. Excel Column Number
+
+Asked in:
+AMAZON
+DIRECTI
+GSOLDMANSACHS
+
+Problem Description
+Given a column title as appears in an Excel sheet, return its corresponding column number.
+
+
+
+Problem Constraints
+1 <= length of the column title <= 5
+
+
+
+Input Format
+The only argument is a string that represents the column title in the excel sheet.
+
+
+
+Output Format
+Return a single integer that represents the corresponding column number.
+
+
+
+Example Input
+Input 1:
+
+ AB
+Input 2:
+
+ BB
+
+
+Example Output
+Output 1:
+
+ 28
+Output 2:
+
+ 54
+
+
+Example Explanation
+Explanation 1:
+
+ A -> 1
+ B -> 2
+ C -> 3
+ ...
+ Z -> 26
+ AA -> 27
+ AB -> 28
+Explanation 2:
+
+ A -> 1
+ B -> 2
+ C -> 3
+ ...
+ Z -> 26
+ AA -> 27
+ AB -> 28
+ ...
+ AZ -> 52
+ BA -> 53
+ BB -> 54
+
+
+SOL:
+class Solution:
+	# @param A : string
+	# @return an integer
+	def titleToNumber(self, A):
+        ans=0
+        for i in range(len(A)):
+            ans*=26
+            ans+=(ord(A[i])-ord('A')+1)
+        return ans
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q18. A, B and Modulo
+
+Problem Description
+Given two integers A and B, find the greatest possible positive integer M, such that A % M = B % M.
+
+
+
+Problem Constraints
+1 <= A, B <= 109
+A != B
+
+
+
+Input Format
+The first argument is an integer A.
+The second argument is an integer B.
+
+
+
+Output Format
+Return an integer denoting the greatest possible positive M.
+
+
+
+Example Input
+Input 1:
+
+A = 1
+B = 2
+Input 2:
+
+A = 5
+B = 10
+
+
+Example Output
+Output 1:
+
+1
+Output 2:
+
+5
+
+
+Example Explanation
+Explanation 1:
+
+1 is the largest value of M such that A % M == B % M.
+Explanation 2:
+
+For M = 5, A % M = 0 and B % M = 0.
+
+No value greater than M = 5, satisfies the condition.
+
+
+
+
+SOL:
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return an integer
+    def solve(self, A, B):
+        M=abs(A-B)
+        return M
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q19. Divisibility by 8
+
+Problem Description
+You are given a number A in the form of a string. Check if the number is divisible by eight or not.
+
+Return 1 if it is divisible by eight else, return 0.
+
+
+Problem Constraints
+1 <= length of the String <= 100000
+'0' <= A[i] <= '9'
+
+
+Input Format
+The only argument given is a string A.
+
+
+Output Format
+Return 1 if it is divisible by eight else return 0.
+
+
+Example Input
+Input 1:
+A = "16"
+Input 2:
+
+A = "123"
+
+
+Example Output
+Output 1:
+1
+Output 2:
+
+0
+
+
+Example Explanation
+Explanation 1:
+ 16 = 8 * 2
+Explanation 2:
+
+123 = 15 * 8 + 3
+
+
+SOL:
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        a = int(A) % 8 == 0
+        if a == True: return 1 
+        return 0
+        
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q20. Mod String
+
+Asked in:
+AMAZON
+
+Problem Description
+You are given a large number in the form of a string A where each character denotes a digit of the number.
+You are also given a number B. You have to find out the value of A % B and return it.
+
+
+
+Problem Constraints
+1 <= A.length() <= 105
+0 <= Ai <= 9
+1 <= B <= 109
+
+
+Input Format
+The first argument is a string A.
+The second argument is an integer B.
+
+
+Output Format
+Return a single integer denoting the value of A % B.
+
+
+Example Input
+Input 1:
+A = "143"
+B = 2
+Input 2:
+
+A = "43535321"
+B = 47
+
+
+Example Output
+Output 1:
+1
+Output 2:
+
+20
+
+
+Example Explanation
+Explanation 1:
+143 is an odd number so 143 % 2 = 1.
+Explanation 2:
+
+43535321 % 47 = 20
+
+
+
+SOL:
+class Solution:
+    # @param A : string
+    # @param B : integer
+    # @return an integer
+    def findMod(self, A, B):
+        n=len(A)
+        ans=0
+        for i in range(0,n):
+            d=int(A[i])
+            #print(d)
+            ans=ans*10
+            ans+=d
+            #ans%=B
+        return(ans%B)
+    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q21. Concatenate Three Numbers
+
+Problem Description
+Given three 2-digit integers, A, B, and C, find out the minimum number obtained by concatenating them in any order.
+
+Return the minimum result obtained.
+
+
+
+Problem Constraints
+10 <= A, B, C <= 99
+
+
+
+Input Format
+The first argument of input contains an integer, A.
+
+The second argument of input contains an integer, B.
+
+The third argument of input contains an integer, C.
+
+
+
+Output Format
+Return an integer representing the answer.
+
+
+
+Example Input
+Input 1:
+
+ A = 10
+ B = 20
+ C = 30
+Input 2:
+
+ A = 55
+ B = 43
+ C = 47 
+
+
+Example Output
+Output 1:
+
+ 102030 
+Output 2:
+
+ 434755 
+
+
+Example Explanation
+Explanation 1:
+
+ 10 + 20 + 30 = 102030 
+Explanation 2:
+
+ 43 + 47 + 55 = 434755 
+
+
+
+SOL:
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @param C : integer
+    # @return an integer
+    def solve(self, A, B, C):
+        return(''.join(sorted([str(A),str(B),str(C)])))
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Q22. Find if two rectangles overlap
+Asked in:
+
+PA
+
+Problem Description
+Eight integers A, B, C, D, E, F, G, and H represent two rectangles in a 2D plane.
+For the first rectangle, its bottom left corner is (A, B), and the top right corner is (C, D), and for the second rectangle, its bottom left corner is (E, F), and the top right corner is (G, H).
+
+Find and return whether the two rectangles overlap or not.
+
+
+
+Problem Constraints
+-10000 <= A < C <= 10000
+
+-10000 <= B < D <= 10000
+
+-10000 <= E < G <= 10000
+
+-10000 <= F < H <= 10000
+
+
+
+Input Format
+The eight arguments are integers A, B, C, D, E, F, G, and H.
+
+
+Output Format
+Return 1 if the two rectangles overlap else, return 0.
+
+
+Example Input
+Input 1:
+
+A = 0   B = 0
+C = 4   D = 4
+E = 2   F = 2
+G = 6   H = 6
+ 
+Input 2:
+
+A = 0   B = 0
+C = 4   D = 4
+E = 2   F = 2
+G = 3   H = 3
+
+
+Example Output
+Output 1:
+1
+Output 2:
+
+1
+
+
+Example Explanation
+Explanation 1:
+Rectangle with bottom left (2, 2) and top right (4, 4) is overlapping.
+Explanation 2:
+
+Overlapping rectangles can be found.
+
+
+
+SOL:
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @param C : integer
+    # @param D : integer
+    # @param E : integer
+    # @param F : integer
+    # @param G : integer
+    # @param H : integer
+    # @return an integer
+    def solve(self, A, B, C, D, E, F, G, H):
+        if ((C<=E)or(A>=G)or(D<=F)or(B>=H)):
+            return 0
+        else:
+            return 1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q23. Leap year? - III
+Asked in:
+
+ZOHO
+
+Problem Description
+Given an integer A representing a year, Return 1 if it is a leap year else, return 0.
+
+A year is a leap year if the following conditions are satisfied:
+
+The year is multiple of 400.
+Else the year is multiple of 4 and not multiple of 100.
+
+
+Problem Constraints
+1 <= A <= 109
+
+
+
+Input Format
+First and only argument is an integer A
+
+
+
+Output Format
+Return 1 if it is a leap year else return 0
+
+
+
+Example Input
+Input 1
+
+ A = 2020
+Input 2:
+
+ A = 1999
+
+
+Example Output
+Output 1
+
+ 1
+Output 2:
+
+ 0
+
+
+Example Explanation
+Explanation 1
+
+ 2020 is a leap year.
+Explanation 2:
+
+ 1999 is not a leap year.
+
+
+
+SOL:
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def solve(self, A):
+        if A % 400 == 0 or (A % 4 == 0 and A % 100 != 0):
+            return 1
+        else:
+            return 0
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q24. Least Common Multiple
+
+Asked in:
+SAPLABS
+
+Problem Description
+Write a program to input an integer T and then for each test case input two integers A and B in two different lines and then print T lines containing Least Common Multiple (LCM) of two given 2 numbers A and B.
+
+LCM of two integers is the smallest positive integer divisible by both.
+
+
+
+Problem Constraints
+1 <= T <= 1000
+
+1 <= A,B <= 1000
+
+
+
+Input Format
+In first-line input T which means number of test cases.
+
+Next 2T lines contains input A and B for each testcase.
+First line of each testcase contain an integer A and second line of the testcase contains input B.
+
+
+
+Output Format
+
+
+T lines each containing an integer representing LCM of A & B.
+
+
+
+Example Input
+Input 1:
+3
+2
+3
+9
+6
+2
+6
+
+
+Example Output
+Output 1:
+6
+18
+6
+
+
+Example Explanation
+Explanation:
+
+ In first testcase 6 is the smallest positive integer which is divisible by both 2 (2 * 3 = 6) and 3 (3 * 2 = 6).
+ In second testcase 18 is the smallest positive integer which is divisible by both 9 (9 * 2 = 18) and 6 (6 * 3 = 18).
+ In third testcase  6 is the smallest positive integer which is divisible by both 2 (2 * 3 = 6) and 6 (6 * 1 = 6).
+
+
+
+
+SOL:
+class Solution:
+
+    def LCM(self, A, B):
+        if A > B:
+            maxx=A
+        else:
+            maxx=B
+        duplicate_max=maxx
+        while True:
+            if (maxx % A == 0)and(maxx % B == 0):
+                lcm=maxx
+                break
+            else:
+                maxx+=duplicate_max
+        return lcm
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------

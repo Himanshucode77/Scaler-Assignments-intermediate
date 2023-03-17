@@ -1,0 +1,673 @@
+
+1290. Convert Binary Number in a Linked List to Integer
+
+Given head which is a reference node to a singly-linked list. The value of each node in the linked list is either 0 or 1. The linked list holds the binary
+representation of a number.
+
+Return the decimal value of the number in the linked list.
+
+The most significant bit is at the head of the linked list.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,0,1]
+Output: 5
+Explanation: (101) in base 2 = (5) in base 10
+Example 2:
+
+Input: head = [0]
+Output: 0
+ 
+
+Constraints:
+
+The Linked List is not empty.
+Number of nodes will not exceed 30.
+Each node's value is either 0 or 1.
+
+
+
+
+
+Sol:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        
+        
+        ans = 0
+        while head:
+            ans = 2*ans + head.val
+            head = head.next
+        return ans
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+876. Middle of the Linked List
+
+
+Given the head of a singly linked list, return the middle node of the linked list.
+
+If there are two middle nodes, return the second middle node.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+Explanation: The middle node of the list is node 3.
+Example 2:
+
+
+Input: head = [1,2,3,4,5,6]
+Output: [4,5,6]
+Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
+ 
+
+Constraints:
+
+The number of nodes in the list is in the range [1, 100].
+1 <= Node.val <= 100
+
+
+
+
+
+Sol:
+print('Q: Print nodes from the middle for k length.\n')
+
+
+class Node:
+    def __init__(self, val=0, next1=None):
+        self.val = val
+        self.next1 = next1
+
+
+class Sol:
+    def traverse(self, head):
+        l = []
+
+        if head is None:
+            return 'No Node'
+        else:
+            while head:
+                l.append(head.val)
+                head = head.next1
+                
+        if len(l) % 2 == 1:
+            return l[len(l) // 2 + 1:]
+        
+        return l[len(l) // 2:]
+
+
+a = Node(114)
+
+a1 = Node(2)
+a.next1 = a1
+
+a2 = Node(11)
+a1.next1 = a2
+
+a3 = Node(38)
+a2.next1 = a3
+
+a4 = Node(23)
+a3.next1 = a4
+
+a5 = Node(245)
+a4.next1 = a5
+
+bb = Sol()
+bb.traverse(a)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q1.Design Linked list
+
+Problem Description
+Given a matrix A of size Nx3 representing operations. Your task is to design the linked list based on these operations.
+
+There are four types of operations:
+
+0 x -1: Add a node of value x before the first element of the linked list. After the insertion, the new node will be the first node of the linked list.
+1 x -1: Append a node of value x to the last element of the linked list.
+2 x index: Add a node of value x before the indexth node in the linked list. If index equals to the length of linked list, the node will be appended to 
+the end of linked list. If index is greater than the length, the node will not be inserted.
+3 index -1: Delete the indexth node in the linked list, if the index is valid.
+A[i][0] represents the type of operation.
+
+A[i][1], A[i][2] represents the corresponding elements with respect to type of operation.
+
+Note: Indexing is 0 based.
+
+
+Problem Constraints
+1 <= Number of operations <= 1000
+1 <= All node values <= 109
+
+
+Input Format
+The only argument given is matrix A.
+
+
+Output Format
+Return the pointer to the starting of the linked list.
+
+
+Example Input
+Input 1:
+    A = [   [0, 1, -1]
+            [1, 2, -1]
+            [2, 3, 1]   ]
+Input 2:
+    A = [   [0, 1, -1]
+            [1, 2, -1]
+            [2, 3, 1]
+            [0, 4, -1]
+            [3, 1, -1]
+            [3, 2, -1]  ]
+
+
+Example Output
+Output 1:
+    1->3->2->NULL
+ 
+Output 2:
+    4->3->NULL
+    
+    
+    
+    
+Sol:
+# Definition for singly-linked list.
+# class ListNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+class Node:
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class Solution:
+    # @param A : list of list of integers
+    # @return the head node in the linked list
+    def print_ll(self,head):
+        a = head
+        while a is not None:
+            print(a,end='')
+            a = a.next
+        print()
+
+    def addbeforefirstitem(self,head,val):
+        nn = Node(val)
+        a = head
+        nn.next = a
+        head = nn
+        return head
+
+    def addnodeafterlastone(self,head,val):
+        if head == None:
+            head = Node(val)
+        else:
+            ne = Node(val)
+            a = head
+            while a.next is not None:
+                a = a.next
+            a.next = ne
+        return head
+    
+    def addnodebeforegivenpos(self,head,val,pos):
+        if pos == 0:
+            return self.addbeforefirstitem(head,val)
+        
+        else:
+            nn = Node(val)
+            a = head
+
+            for i in range(1,pos):
+                a = a.next
+            if a == None:
+                return head
+            else:
+                nn.next = a.next 
+                a.next = nn
+                return head
+            
+    def deletnodeatspecificpos(self,head,pos):
+        
+        if head == None:
+            return head
+        if pos == 0:
+            return head.next
+        else:
+            a = head
+            for i in range(1,pos):
+                a = a.next
+            if a == None or a.next == None:
+                return head
+            else:
+                a.next = a.next.next
+                return head
+
+
+
+                
+    def solve(self, A):
+        head = None
+        for row in range(len(A)):
+
+            typeof_operation = A[row][0]
+            
+            if typeof_operation == 0:
+                head = self.addbeforefirstitem(head,A[row][1])
+            
+            elif typeof_operation == 1:
+                head = self.addnodeafterlastone(head,A[row][1])
+
+            elif typeof_operation == 2:
+                head = self.addnodebeforegivenpos(head,A[row][1],A[row][2])
+
+            else:
+                head = self.deletnodeatspecificpos(head,A[row][1])
+            
+        return head
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q1. Linked-List
+
+Asked in:
+
+TCS
+WIPRO
+
+Problem Description
+Design and implement a Linked List data structure.
+A node in a linked list should have the following attributes - an integer value and a pointer to the next node. It should support the following operations:
+
+insert_node(position, value) - To insert the input value at the given position in the linked list.
+delete_node(position) - Delete the value at the given position from the linked list.
+print_ll() - Print the entire linked list, such that each element is followed by a single space.
+Note:
+
+If an input position does not satisfy the constraint, no action is required.
+Each print query has to be executed in a new line.
+
+
+Problem Constraints
+1 <= value <= 105
+1 <= position <= n where, n is the size of the linked-list.
+
+
+
+Input Format
+First line contains an integer denoting number of cases, let's say t.
+Next t line denotes the cases.
+
+
+Output Format
+When there is a case of print_ll(),  Print the entire linked list, such that each element is followed by a single space.
+NOTE: You don't need to return anything.
+
+
+Example Input
+5
+i 1 23
+i 2 24
+p
+d 1
+p
+
+
+Example Output
+23 24
+24
+
+
+Example Explanation
+After first two cases linked list contains two elements 23 and 24.
+At third case print: 23 24.
+At fourth case delete value at first position, only one element left 24.
+At fifth case print: 24.
+
+
+
+
+
+Sol:
+class Node:
+    def __init__(self,value):
+        self.value = value
+        self.next = None
+head = None
+size_ll = 0
+
+def insert_node(position, value):
+    # @param position, an integer
+    # @param value, an integer
+    global head 
+    global size_ll
+    if position >= 1 and position <= size_ll+1:
+        nn = Node(value)
+        if position == 1:
+            nn.next = head
+            head = nn
+        else:
+            c = 1
+            a = head
+            for i in range(1,position-1):
+                a = a.next
+                c+=1
+            nn.next = a.next
+            a.next = nn   
+        size_ll += 1
+
+def delete_node(position):
+    # @param position, integer
+    # @return an integer
+    global head 
+    global size_ll
+    if position >= 1 and position <= size_ll:
+        temp = None
+        a = head
+    
+        if position == 1:
+
+            head = a.next
+             
+        else:
+            c = 1
+            a = head
+            for i in range(1,position-1):
+                a = a.next
+                c += 1
+            temp = a.next
+            a.next = a.next.next
+        size_ll -= 1
+
+def print_ll():
+    # Output each element followed by a space
+    global head 
+    a = head
+    while a is not None:
+        if a.next == None:
+            print(a.value)
+        else:
+            print(a.value, end=' ')
+        a = a.next
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2. Flatten Nested List Iterator
+
+You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists.
+Implement an iterator to flatten it.
+
+Implement the NestedIterator class:
+
+NestedIterator(List nestedList) Initializes the iterator with the nested list nestedList.
+int next() Returns the next integer in the nested list.
+boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+
+Example 1:
+Input: nestedList = [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+Example 2:
+Input: nestedList = [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+Constraints:
+The sum of integers in all cases does not exceed 1e5.
+The values of the integers in the nested list are in the range [-1e6, 1e6].
+
+
+
+Sol:
+# # This is the interface that allows for creating nested lists.
+# # You should not implement it, or speculate about its implementation
+# class NestedInteger:
+#     def __init__(self, x):
+        
+#     # Return true if this NestedInteger holds a single integer, rather than a nested list.
+#     def isInteger(self):
+        
+#     # Return the single integer that this NestedInteger holds, if it holds a single integer
+#     # The result is 1e9 if this NestedInteger holds a nested list
+#     def getInteger(self):
+        
+#     # Return the nested list that this NestedInteger holds, if it holds a nested list
+#     # The result is an empty list if this NestedInteger holds a single integer
+#     def getList(self):
+        
+from collections import deque
+class NestedIterator:
+    n = []
+    def __init__(self, nestedList):
+        self.n = self.flatten(nestedList)
+        self.n = deque(self.flatten(nestedList))
+
+
+    def flatten(self,nestedList):
+        temp = []
+        for i in nestedList:
+            if i.isInteger():
+                temp.append(i.getInteger())
+            else:
+                temp.extend(self.flatten(i.getList()))
+        return temp
+        #
+    
+    def next(self):
+        return self.n.popleft()
+    
+    def hasNext(self):
+        return self.n
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Middle element of linked list
+
+Asked in:
+
+BHARATPE
+GROUPON
+DELHIVERY
+
+Problem Description
+Given a linked list of integers, find and return the middle element of the linked list.
+
+NOTE: If there are N nodes in the linked list and N is even then return the (N/2 + 1)th element.
+
+
+
+Problem Constraints
+1 <= length of the linked list <= 100000
+
+1 <= Node value <= 109
+
+
+
+Input Format
+The only argument given head pointer of linked list.
+
+
+
+Output Format
+Return the middle element of the linked list.
+
+
+
+Example Input
+Input 1:
+
+ 1 -> 2 -> 3 -> 4 -> 5
+Input 2:
+
+ 1 -> 5 -> 6 -> 2 -> 3 -> 4
+
+
+Example Output
+Output 1:
+
+ 3
+Output 2:
+
+ 2
+
+
+Example Explanation
+Explanation 1:
+
+ The middle element is 3.
+Explanation 2:
+
+ The middle element in even length linked list of length N is ((N/2) + 1)th element which is 2.
+
+
+
+
+
+Sol:
+# Definition for singly-linked list.
+# class ListNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+
+class Node:
+    # @param A : head node of linked list
+    # @return an integer
+    def solve(self, A):
+        self.head = A
+        lenn = self.scaler_fLen()
+        pos = (lenn//2)+1
+        return self.scaler_pos(pos).val
+
+    def scaler_fLen(self):
+        a = self.head
+        lenn = 0
+        while a is not None:                         
+            lenn += 1
+            a = a.next 
+        return lenn
+    
+    def scaler_pos(self,pos):
+        a = self.head
+        for i in range(1,pos):
+            a = a.next
+            
+        return a
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3. Remove Duplicates from Sorted List
+Asked in:
+MICROSOFT
+VMWARE
+GOLDMANSACHS
+
+Problem Description
+Given a sorted linked list, delete all duplicates such that each element appears only once.
+
+
+
+Problem Constraints
+0 <= length of linked list <= 106
+
+
+
+Input Format
+First argument is the head pointer of the linked list.
+
+
+
+Output Format
+Return the head pointer of the linked list after removing all duplicates.
+
+
+
+Example Input
+Input 1:
+
+ 1->1->2
+Input 2:
+
+ 1->1->2->3->3
+
+
+Example Output
+Output 1:
+
+ 1->2
+Output 2:
+
+ 1->2->3
+
+
+Example Explanation
+Explanation 1:
+
+ Each element appear only once in 1->2.
+
+
+
+
+Sol:
+# Definition for singly-linked list.
+# class ListNode:
+#	def __init__(self, x):
+#		self.val = x
+#		self.next = None
+
+class Solution:
+	# @param A : head node of linked list
+	# @return the head node in the linked list
+	def deleteDuplicates(self, A):
+        self.head = A
+        while A.next is not None:
+            A = A.next
+        return self.scaler_dup()
+
+    def scaler_dup(self):
+        a = self.head
+        while a.next is not None:
+            if a.val == a.next.val:
+                a.next = a.next.next
+            else:
+                a =a.next
+        return self.head
+            
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------

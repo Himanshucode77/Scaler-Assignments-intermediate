@@ -1,0 +1,144 @@
+1379. Find a Corresponding Node of a Binary Tree in a Clone of That Tree
+
+
+Given two binary trees original and cloned and given a reference to a node target in the original tree.
+
+The cloned tree is a copy of the original tree.
+
+Return a reference to the same node in the cloned tree.
+
+Note that you are not allowed to change any of the two trees or the target node and the answer must be a reference to a node in the cloned tree.
+
+ 
+
+Example 1:
+
+
+Input: tree = [7,4,3,null,null,6,19], target = 3
+Output: 3
+Explanation: In all examples the original and cloned trees are shown. The target node is a green node from the original tree. The answer is the yellow node from the cloned tree.
+Example 2:
+
+
+Input: tree = [7], target =  7
+Output: 7
+Example 3:
+
+
+Input: tree = [8,null,6,null,5,null,4,null,3,null,2,null,1], target = 4
+Output: 4
+
+
+
+
+
+
+Sol:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def getTargetCopy(self, original: TreeNode, cloned: TreeNode, target: TreeNode) -> TreeNode:
+        
+        if cloned == None:
+            return None
+        stack = [cloned]
+        result = None
+        
+        while len(stack) > 0 :
+            current = stack.pop(0)
+            if current.val == target.val:
+                # return current
+                result = current
+            else:
+                if current.left != None:
+                    stack.append(current.left)
+                if current.right != None:
+                    stack.append(current.right)
+        return result
+                    
+                
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2236. Root Equals Sum of Children
+
+You are given the root of a binary tree that consists of exactly 3 nodes: the root, its left child, and its right child.
+
+Return true if the value of the root is equal to the sum of the values of its two children, or false otherwise.
+
+ 
+
+Example 1:
+
+
+Input: root = [10,4,6]
+Output: true
+Explanation: The values of the root, its left child, and its right child are 10, 4, and 6, respectively.
+10 is equal to 4 + 6, so we return true.
+Example 2:
+
+
+Input: root = [5,3,1]
+Output: false
+Explanation: The values of the root, its left child, and its right child are 5, 3, and 1, respectively.
+5 is not equal to 3 + 1, so we return false.
+ 
+
+Constraints:
+
+The tree consists only of the root, its left child, and its right child.
+-100 <= Node.val <= 100
+
+
+
+
+Sol:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def checkTree(self, root: Optional[TreeNode]) -> bool:
+         if root.left.val + root.right.val == root.val:
+             return True
+         return False
+  
+  
+  
+Sol2:  
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def checkTree(self, root: Optional[TreeNode]) -> bool:
+        return (root.left.val + root.right.val) == root.val
+        
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
